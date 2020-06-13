@@ -85,7 +85,10 @@
 
     ::-webkit-scrollbar {
         width: 10px;
+        height: 5px;
     }
+
+
 
     /* Track */
     ::-webkit-scrollbar-track {
