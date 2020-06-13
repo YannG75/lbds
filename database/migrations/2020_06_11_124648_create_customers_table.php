@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->integer('first_name')->unsigned();
             $table->integer('last_name')->unsigned();
-            $table->integer('order_id')->unsigned();
+            $table->string('email')->unsigned();
         });
     }
 
