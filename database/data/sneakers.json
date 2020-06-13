@@ -1,0 +1,303 @@
+[
+    {
+        "name": "Air Jordan 1 Mid",
+        "brand": "Jordan",
+        "color": "Alternate Swoosh",
+        "description": "Cette version mid de la populaire Air Jordan 1 est dotée d’une empeigne en cuir, affichant une combinaison intemporelle de noir et de blanc. On découvre ensuite des swoos en cuir verni, déclinés en rouge sur les côtés extérieurs et en jaune à l’intérieur. Un Jumpman sur la languette, un logo Wings gravé au niveau de la cheville, ainsi qu'une semelle blanche combinée à une outsole vert émeraude, finalisent le design de Peter Moore.",
+        "price": 110,
+        "release_date": "2020-04-18",
+        "image": "air-jordan-1-mid-alternate-swoosh-bq6472-063-pic1_zd4ibz.jpg",
+        "brand_id": 2
+    },
+    {
+        "name": "Air Jordan 1 Mid",
+        "brand": "Jordan",
+        "color": "White Snakeskin",
+        "description": "Avec l’arrivée du beau temps, la marque au Jumpman nous propose une nouvelle interprétation du design de Bruce Kilgore. À première vue, la silhouette introduite en 1985 bénéficie d’une simple robe en cuir blanc. Toutefois, lorsqu’on observe cette version Mid d’un peu plus prêt, on remarque un imprimé snakeskin relativement discret sur toute l’empeigne. Une touche de noir sur le Jumpman de la languette, un logo Wings gravé à la hauteur de la cheville et une semelle blanche complètent ce look immaculé.",
+        "price": 110,
+        "release_date": "2020-04-18",
+        "image": "air-jordan-1-mid-white-snakeskin-bq6472-110-pic01_q5hc6a.jpg",
+        "brand_id": 2
+    },
+    {
+        "name": "Air Jordan 1 Low SE",
+        "brand": "Jordan",
+        "color": "Laser",
+        "description": "La lowtop associe du suede perforé bleu, du cuir blanc et du cuir noir. On remarque également un effet satiné sur la languette dotée d'un logo Jumpman bleu brodé dessus. Un numéro 23 blanc au niveau des lacets et un logo wings ton-sur-ton sur les talons complètent l'ensemble.",
+        "price": 100,
+        "release_date": "2020-03-30",
+        "image": "air-jordan-1-low-se-black-laser-blue-ck3022-004-pic01_vghl4c.jpg",
+        "brand_id": 2
+    },
+    {
+        "name": "Melody Ehsani x Air Jordan OG",
+        "brand": "Jordan",
+        "color": "SP",
+        "description": "À l’occasion du mois de l’histoire des femmes, la créatrice de Los Angeles nous présente une nouvelle collaboration inspirée de la WNBA, de la première silhouette Jordan imaginée pour le beau sexe ou encore de la comédie romantique Love & Basketball.\n\nSuite au teaser instagram, Melody Ehsani lève le voile sur sa nouvelle collaboration avec Jordan Brand. La Air Jordan Women’s affiche une base totalement noire, associée à des détails rouges et des superpositions ondulées réfléchissantes. On remarque enfin des deubrés en forme de cerises, ainsi que les initiales de Melody sur le talon et les insoles.",
+        "price": 150,
+        "release_date": "2020-03-19",
+        "image": "melody-ehsani-air-jordan-womens-CQ2514-005-pic01_o37arh.jpg",
+        "brand_id": 2
+    },
+    {
+        "name": "Air Jordan 1 High",
+        "brand": "Jordan",
+        "color": "Zoom R2T",
+        "description": "Présentée en 1985, la Air Jordan 1 a connu une multitude de transformations au cours de ces dernières années. Issue de la collection Fearless, qui célèbre l’intronisation de Michael Jordan au Hall Of Fame, cette nouvelle itération bénéficie d’une tige en cuir noir, agrémentée d’une surprenante finition irisée qui recouvre toute l'empeigne. On remarque enfin une pointe de rouge sur le branding de la languette, l’inscription \"C8082-AZ1\" gravée sur les talons, ainsi qu’une nouvelle semelle équipée de la technologie Zoom Air et d’une outsole Icy.",
+        "price": 175,
+        "release_date": "2019-12-20",
+        "image": "air-jordan-1-high-zoom-r2t-01_fa8kgz.jpg",
+        "brand_id": 2
+    },
+    {
+        "name": "Air Jordan 12",
+        "brand": "Jordan",
+        "color": "OVO Black",
+        "description": "Imaginée par le rappeur canadien Drake, la silhouette présente une conception premium en daim/nubuck et cuir galuchat noirs finalisée par une semelle translucide noire pour un rendu monochrome. Le logo du label OVO a été placé sur les semelles intérieures.",
+        "price": 225,
+        "release_date": "2020-02-18",
+        "image": "ovo-air-jordan-12-black_ovz2vx.jpg",
+        "brand_id": 2
+    },
+    {
+        "name": "Adidas UltraBoost DNA",
+        "brand": "Adidas",
+        "color": "Leather White",
+        "description": "Dans le cadre du 50ème anniversaire de la adidas Superstar, l’équipementier allemand nous présente une nouvelle interprétation de sa célèbre runner. Affichant un look qui n’est pas sans rappeler la collaboration Prada, cette UltraBoost présente une combinaison intemporelle de blanc et de noir. On découvre de nombreuses autres références, à l’instar de la construction intégrale en cuir, des brandings dorés ou encore des rainures que l’on retrouve sur le mudguard. Une semelle Boost blanche, accompagnée d’une outsole assortie, peaufinent l’hommage.",
+        "price": 160,
+        "release_date": "2020-01-11",
+        "image": "adidas-ultraboost-dna-leather-white-eh1210-pic1-1100x771_lbmvjm.jpg",
+        "brand_id": 3
+    },
+    {
+        "name": "Jonah Hill x Adidas Superstar",
+        "brand": "Adidas",
+        "color": "White",
+        "description": "Le nouvel ambassadeur de la marque aux trois bandes nous propose une interprétation inédite de la adidas Superstar dans le cadre de son 50ème anniversaire. Celle-ci présente une empeigne en cuir blanc, accompagnée de surprenantes bandes en relief sur le quarter panel. On remarque également d’autres nouveautés comme une toebox légèrement lissée, ainsi que des lacets oversize. Les autres finitions comprennent des coutures de baseball, les initiales de l’acteur et un branding Superstar manuscrit sur le talon. On vous rappelle enfin que la collection comprendra aussi deux nouvelles Jonah Hill x adidas Samba.",
+        "price": 140,
+        "release_date": "2020-04-11",
+        "image": "jonah-hill-adidas-superstar-fw7577-pic05_urjkzm.jpg",
+        "brand_id":  3
+    },
+    {
+        "name": "Adidas 4D Run 1.0",
+        "brand": "Adidas",
+        "color": "Grey",
+        "description": "Cette itération inédite se présente comme le futur du running et arbore une tige en Primeknit agrémentée d’un imprimé abstrait. On découvre ensuite des empiècements thermocollés à l’image du mudguard et des trois bandes latérales, des lacets blancs, ainsi qu’un renfort au talon de couleur corail. Une semelle vert menthe 4D imprimée grâce à la Digital Light Synthesis finalise ce design ultra léger.",
+        "price": 250,
+        "release_date": "2020-02-27",
+        "image": "adidas-4d-run-1-0-grey-fw1233-pic01_uvlijn.jpg",
+        "brand_id":  3
+    },
+    {
+        "name": "Adidas Ultra Boost 2020",
+        "brand": "Adidas",
+        "color": "Metallic Copper",
+        "description": "En parallèle au coloris Signal Green, la marque aux trois bandes nous présente une déclinaison tout aussi ambitieuse. Elle est pourvue d’une tige blanc cassé, confectionnée avec le nouveau Primeknit+. Elle bénéficie également d’une construction écologique et du système Tailored Fibre Placement sur le mudguard pour le maintien. Le design est complété par des détails noirs, un renfort au talon en 3D, ainsi qu’une semelle Boost agrémentée d’une finition cuivrée.",
+        "price": 180,
+        "release_date": "2020-04-10",
+        "image": "adidas-ultra-boost-2020-metallic-copper-eg0721-pic2_wkpqpx.jpg",
+        "brand_id":  3
+    },
+    {
+        "name": "Air Force 1 Low",
+        "brand": "Nike",
+        "color": "Tear Away Pack",
+        "description": "En parallèle à la Air Max 98, l’équipementier nous propose une nouvelle édition personnalisable. À première vue, cette Air Force 1 semble être confectionnée avec un velours côtelé blanc. Toutefois, lorsque l’on observe la paire d’un peu plus près, on s’aperçoit rapidement que les superpositions peuvent laisser place à une multitude d’empiècements colorés. La palette de couleurs s'étend du orange au vert, en passant par le bleu, le jaune et le rose. Pour faciliter le custom, on remarque enfin de petites indications parsemées sur le design de Bruce Kilgore.",
+        "price": 110,
+        "release_date": "2020-04-10",
+        "image": "nike-air-force-1-low-tear-away-pack-cj1650-101-pic1_p7kqve.jpg",
+        "brand_id": 1
+    },
+    {
+        "name": "Air Force 1 Low",
+        "brand": "Nike",
+        "color": "Sketch White Black",
+        "description": "La version low de la AF-1 imaginée par le designer Bruce Kilgore en 1982 reprend le thème Sketch To Shelf de la Nike Air Max 1 en juillet 2018. La conception en cuir blanc est contrastée par un swoosh dessiné au marqueur noir, par plusieurs inscriptions comme \"1982\", le branding Nike sur le tag de la languette ou bien le dessin représentant l'amorti air au talon.",
+        "price": 110,
+        "release_date": "2020-01-07",
+        "image": "nike-air-force-1-low-sketch-white-black-cw7581-101-pic01-1100x773_d1mncv.jpg",
+        "brand_id":  1
+    },
+    {
+        "name": "Blazer Mid '77",
+        "brand": "Nike",
+        "color": "Snakeskin White Red/Blue",
+        "description": "La silhouette vintage bénéficie d’une base en cuir blanc, complimentée par une languette en nylon et des lacets assortis. Du côté des nouveautés, on remarque que les superpositions abandonnent le traditionnel daim gris au profit d’un cuir blanc ou encore que les habituelles rainures de la semelle laissent place à de petites étoiles pour l’occasion. La touche finale est apportée par un swoosh agrémenté d’une finition snakeskin bleu sur les côtés extérieurs tandis que les côtés opposés optent pour une teinte rouge foncé.",
+        "price": 100,
+        "release_date": "2020-01-27",
+        "image": "nike-blazer-mid-77-cw7073-100-pic01_wrdumh.jpg",
+        "brand_id":  1
+    },
+    {
+        "name": "Nike Air Max",
+        "brand": "Nike",
+        "color": "Tailwind 4 SE ACG",
+        "description": "Après avoir dévoilé une Nike Air Force 1 Low ACG Khaki Teal et une Nike Air Max 95 ACG Yellow, la marque au swoosh complète son pack commémoratif avec une déclinaison inédite de la Nike Air Max Tailwind 4.\nCelle-ci est pourvue d’un upper en synthétique noir, une couleur que l'on retrouve également sur les superpositions en cuir. Ce design de baroudeur est rehaussé par un dégradé de teintes violettes sur le quarter panel, un mini swoosh jaune ou encore par des unités Air-Sole déclinées en turquoise. Des lacets de randonnée, un tag amovible “Hike Mike” et une semelle blanche peaufinent l’ensemble.",
+        "price": 180,
+        "release_date": "2020-04-01",
+        "image": "nike-air-max-tailwind-4-se-acg-cu9240-001-pic01_kkwtnz.jpg",
+        "brand_id":  1
+    },
+    {
+        "name": "Nike KD 13",
+        "brand": "Nike",
+        "color": "Butterflies & Chains",
+        "description": "Même s’il ne s’agit pas là d’une collaboration officielle avec Versace, cette déclinaison inédite aurait très bien pu être imaginée par la célèbre maison de haute couture italienne. En effet, la tige en synthétique est recouverte d’un somptueux imprimé qui arbore une combinaison familière de chaînes en or et de papillons.\nOn remarque ensuite quelques accents noirs, ainsi qu’une multitude de détails dorés comme le swoosh latéral qui renforcent cette esthétique luxueuse. Des lacets bicolores, des insoles rouges, ainsi qu’une semelle blanche couplée à une outsole noire, finalisent le design de Kevin Durant.",
+        "price": 150,
+        "release_date": "2020-04-13",
+        "image": "nike-kd-13-butterflies-chains-ci9948-600-pic01_xkjst9.jpg",
+        "brand_id":  1
+    },
+    {
+        "name": "ASICS GEL-Lyte III",
+        "brand": "Asics",
+        "color": "Barcode",
+        "description": "Pour son 30ème anniversaire, le design de Shigeyuki Mitsui fait peau neuve et se pare d’une tige en TPE translucide très contemporaine. Inspirée des codes barres, la silhouette affiche un mélange de motifs linéaires et données numériques déclinés en noir et blanc sur le quarter panel et la semelle. On découvre enfin des superpositions en cuir assorties, un branding \"Sound Mind, Sound Body\" sur la languette, ainsi qu'une semelle équipée de la technologie Gel.",
+        "price": 120,
+        "release_date": "2020-03-27",
+        "image": "asics-gel-lyte-3-barcode-1191a336-001-pic01_eiskj2.jpg",
+        "brand_id": 4
+    },
+    {
+        "name": "Vivienne Westwood x Asics",
+        "brand": "Asics",
+        "color": "HyperGEL-LYTE",
+        "description": "Cette déclinaison audacieuse de la Asics HyperGEL-LYTE se pare d’une empeigne en cuir, agrémentée d’un imprimé intégral inspiré des peintures de François Boucher. Au niveau de la palette de couleurs, on retrouve une dominance de tons bleus, ainsi que des accents orangés. Quelques illustrations supplémentaires sur les semelles intérieures, ainsi qu’une midsole blanche couplée à une outsole noire, complètent le look. Sachez enfin qu’une Asics Gel-Saga White et une Asics Gel-DS Trainer sortiront également le même jour.",
+        "price": 200,
+        "release_date": "2019-08-17",
+        "image": "vivienne-westwood-asics-hyperdel-lyte-01_rfhxln.jpg",
+        "brand_id":  4
+    },
+    {
+        "name": "Asics Gel Kayano 5 OG",
+        "brand": "Asics",
+        "color": "Blue Yellow",
+        "description": "Imaginée par Toshikazu Kayano, la silhouette rétro se pare d’une tige blanche, confectionnée avec un mélange de cuir et de mesh. Elle arbore un branding latéral noir, ainsi que plusieurs touches de bleu, de jaune et de gris parsemées sur toute l’empeigne. Une imposante semelle intermédiaire blanche dotée de la technologie Gel apporte la touche finale.",
+        "price": 140,
+        "release_date": "2019-04-07",
+        "image": "asics-gel-kayano-5-og-blue-yellow-001_otgseq.jpg",
+        "brand_id":  4
+    },
+    {
+        "name": "Asics Gel Lyte III",
+        "brand": "Asics",
+        "color": "Lacquer Pack",
+        "description": "Ce nouveau modèle nous fait penser à la très célèbre Nike Air Yeezy 2 Black Solar Red. Cependant même s'il se base sur la même palette de couleurs, il s'agit bien là de leur seul point commun.\nAsics nous présente ce modèle entièrement en noir dont le cuir est subtilement texturé. La doublure intérieure en satin rouge apporte la touche de contraste et la semelle extérieure translucide vient achever la silhouette.",
+        "price": 145,
+        "release_date": "2019-04-28",
+        "image": "asics-gel-lyte-III-lacquer-pack-1_jyek97.jpg",
+        "brand_id":  4
+    },
+    {
+        "name": "ASICS Gel-Lyte III",
+        "brand": "Asics",
+        "color": "Okayama Denim",
+        "description": "La silhouette a une conception en textile denim noir avec un logo en cuir noir contourné de blanc cassé, finalisée par des accents de rouge.",
+        "price": 140,
+        "release_date": "2016-08-27",
+        "image": "asics-gel-lyte-iii-okayama-denim-black_kg3u7a.jpg",
+        "brand_id":  4
+    },
+    {
+        "name": "Def Jam x Puma Clyde Sky LX",
+        "brand": "Puma",
+        "color": "Fear of a Black Planet",
+        "description": "Cette nouvelle collaboration rend hommage au troisième album de Public Enemy, un groupe de rap emblématique formé par Chuck D, Flavor Flav, Professor Griff et Terminator X. \"Fear of a Black Planet\" est sorti le 10 avril 1990 et a été certifié disque de platine aux États-Unis. À noter enfin que l’album a également inspiré une collaboration Supreme x Public Enemy x Undercover en mars 2018.\nLa lowtop est pourvue d’une empeigne en daim rouge, accompagnée d’une Form Stripe noire. L’ensemble est complété par une semelle vintage agrémentée du titre de l’album, un “Puma Clyde” doré sur le quarter panel, ainsi que le logo de Public Enemy sur le tag de la languette, les talons et les semelles intérieures.",
+        "price": 90,
+        "release_date": "2020-04-09",
+        "image": "def-jam-puma-clyde-sky-lx-fear-of-a-black-planet-374539_01-pic01_caaz3x.jpg",
+        "brand_id": 5
+    },
+    {
+        "name": "Puma Cell",
+        "brand": "Puma",
+        "color": "Venom",
+        "description": "Avec son look athlétique, la paire arbore un style vintage qui réveillera l’OG qui est en vous. Disponible dans les coloris «White/Surf the Web» et «White/Fuchsia», la silhouette rétro conserve son aspect original mais se pare de nouveaux matériaux et d’une technologie améliorée. Cette nouvelle version dispose d'une tige en mesh, agrémentée d’empiècements en suède et en cuir, quelques broderies et une semelle dotée d'une unité Air-Sole.",
+        "price": 120,
+        "release_date": "2019-12-06",
+        "image": "puma-cell-venom-001_nqnpk4.jpg",
+        "brand_id":  5
+    },
+    {
+        "name": "Puma Suede x Staple",
+        "brand": "Puma",
+        "color": "Pigeon",
+        "description": "Ce n’est pas la première fois que les deux partenaires travaillent ensemble, on se souvient des collaborations sur la Blaze Of Glory, la Suede Pigeon limitée à 500 exemplaires de 2013 ou plus récemment du Suede Pigeon pack.\nSans surprise, la paire est dotée d’une empeigne grise, rehaussée par quelques accents de blanc et de rose. Le branding latéral de la marque au félin arbore un traitement irisé en référence aux plumes que l’on retrouve sur le cou du volatile. Une touche de fourrure au niveau des oeillets et du talon, un logo Pigeon à l’arrière, ainsi qu’un packaging spécial, finalisent le design de cette collaboration inédite.",
+        "price": 109,
+        "release_date": "2013-12-06",
+        "image": "puma-suede-staple-pigeon-001_phbtdr.jpg",
+        "brand_id":  5
+    },
+    {
+        "name": "Puma Thunder",
+        "brand": "Puma",
+        "color": "Spectra Burgundy Black",
+        "description": "L’imposante silhouette de la marque allemande est dotée d'un mélange de daim, de maille et de cuir. La runner dispose d'une tige de couleur bordeaux, agrémentée d’empiècements noirs, d’une semelle IMEVA et de plusieurs brandings que l’on retrouve sur la languette, le tirant arrière et le quarter panel.",
+        "price": 130,
+        "release_date": "2019-08-01",
+        "image": "puma-thunder-spectra-burgundy-black-001_t2onhu.jpg",
+        "brand_id":  5
+    },
+  {
+    "name": "PUMA Thunder",
+    "brand": "Puma",
+    "color": "Electric",
+    "description": "La nouvelle silhouette chunky de la marque allemande s'inspire de la McQ Tech Runner Low imaginée par le défunt Alexander McQueen et a été déclinée dans deux coloris: Grey/Purple et White/Silver-Blue. Elle affiche une empeigne en maille blanche contrastée par plusieurs empiècements en cuir synthétique et cuir verni.\nLe tag sur la languette accompagné de l’inscription PUMA sur le tirant du talon, ainsi qu’une semelle IMEVA oversized, rappelant celle de la Balenciaga Triple S, finalisent ce design inspiré du corps humain.",
+    "price": 130,
+    "release_date": "2019-08-01",
+    "image": "puma-thunder-electric-01_dnao1g.jpg",
+    "brand_id": 5
+  },
+  {
+    "name": "Timberland Sprint Trekker",
+    "brand": "Timberland",
+    "color": "Jaune",
+    "description": "La tige écologique de ces chaussures de randonnée pour homme est fabriquée en cuir provenant de sources responsables et de tissu ReBOTL™ recyclé. Elles sont dotées d'une assise plantaire matelassée OrthoLite® offrant un excellent soutien, d'une semelle intermédiaire en EVA et d'une semelle crantée en caoutchouc.",
+    "price": 140,
+    "release_date": "2019-08-01",
+    "image": "Timberland-sprint-trekker-krekel.jpg",
+    "brand_id": 6
+  },
+  {
+    "name": "timberland Union Warf",
+    "brand": "Timberland",
+    "color": "noir",
+    "description": "Tennis à lacets en toile avec classique logo Timberland sur le côté. Dotées d'une assise plantaire en EVA qui absorbe les chocs pour plus de confort et de soutien.",
+    "price": 65,
+    "release_date": "2015-06-12",
+    "image": "timberland-union-warf.jpg",
+    "brand_id": 6
+  },
+  {
+    "name": "timberland Oxford Killington",
+    "brand": "Timberland",
+    "color": "noir",
+    "description": "Ces chaussures Oxford classiques pour homme font appel à la technologie SensorFlex™ pour plus de légèreté, de confort et de souplesse. Ces baskets en tissu et cuir sont fabriquées en ReBOTL™, un tissu recyclé, et en cuir issu d'une tancolore neroe écologique.",
+    "price": 120,
+    "release_date": "2017-07-22",
+    "image": "timberland-Oxford-Killington.jpg",
+    "brand_id": 6
+  },
+  {
+    "name": "timbderland oxford adventure 2.0 cupsole",
+    "brand": "Timberland",
+    "color": "Bleu Marine",
+    "description": "Conçue pour apporter style et confort, cette Oxford moderne pour homme combine confort et durabilité. Elle est fabriquée à partir de matériaux recyclés et provenant d'une source responsable : cuir issu d'une tancolore neroe écologique, doublure et lacets en tissu recyclé.",
+    "price": 100,
+    "release_date": "2018-06-18",
+    "image": "timbderland-oxford-adventure-2-cupsole.jpg",
+    "brand_id": 6
+  },
+  {
+    "name": "Chaussure D Rose 10 Gris EH2100 01 standard",
+    "brand": "Adidas",
+    "color": "DASH GREY / SCARLET / CLOUD WHITE",
+    "description": "Laisse tes adversaires sur place et dribble avec le style de Derrick Rose. Cette chaussure de basketball adidas est inspirée du plus jeune MVP de l'histoire de la ligue. Conçue pour le confort, elle t'offre un maintien exceptionnel lorsque tu attaques le cercle. Elle t'assure une excellente adhérence dans tes changements de direction.",
+    "price": 140,
+    "release_date": "2020-04-05",
+    "image": "Chaussure_D_Rose_10_Gris_EH2100_01_standard.jpg",
+    "brand_id": 3
+  }
+
+]

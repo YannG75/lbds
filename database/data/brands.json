@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Nike",
+        "image": "1200px-Swoosh.svg_xocilx.png",
+        "banner": "bannierenike3_905_euivfi.jpg"
+    },
+    {
+        "name": "Jordan",
+        "image": "kisspng-jumpman-t-shirt-air-jordan-logo-nike-michael-jordan-5ac3cac6513827.5305708915227808703327_bi5crn.png",
+        "banner": "e9002f76513055.5c6c28e4b628a_yanpa7.jpg"
+    },
+    {
+        "name": "Adidas",
+        "image": "580b57fcd9996e24bc43c4f2_uucn83.png",
+        "banner": "unnamed_jghijr.jpg"
+    },
+    {
+        "name": "Asics",
+        "image": "kisspng-logo-asics-brand-clothing-trademark-confessions-of-a-shopaholic-quando-duas-marcas-de-5b6d97a0572990.995940881533908896357_s8rww7.png",
+        "banner": "telechargement_kcg958.jpg"
+    },
+    {
+      "name": "Puma",
+      "image": "pngguru.com_qtelmz.png",
+      "banner": "137-11-11-44-puma_banner_1200x1200_tashwq.jpg"
+    },
+    {
+      "name": "Timberland",
+      "image": "Timberland-logo.png",
+      "banner": "timberland-banner.jpg"
+    }
+]
