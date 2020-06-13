@@ -37,4 +37,8 @@
 
 <style scoped lang="scss">
 
+    img {
+        object-fit: scale-down;
+    }
+
 </style>

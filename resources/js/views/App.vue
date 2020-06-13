@@ -29,8 +29,8 @@
                     </router-link>
                 </section>
 
-                <div class="level-item is-relative">
-                    <i class="fas fa-search" @click="openSearch = !openSearch"></i>
+                <div class="level-item is-relative" :class="{'opened': openSearch}">
+                    <i class="fas fa-search" @click="openSearch = !openSearch" ></i>
                     <input type="search" v-model="search" :class="{'open': openSearch}"
                            @keypress.enter="goToSearchRoute">
 
@@ -81,6 +81,26 @@
     $carousel-indicator-color: #3cd07d;
     @import "~bulma";
     @import "~buefy/src/scss/buefy";
+
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #3cd07d;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #41ffa7;
+    }
 
     .navbar-item img {
         max-height: unset;

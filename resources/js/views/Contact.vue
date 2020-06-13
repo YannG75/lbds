@@ -10,7 +10,7 @@
                             <b-input v-model="form.nom" placeholder="Kent"></b-input>
                         </b-field>
                         <b-field label="Prenom">
-                            <b-input v-model="form.prenom" placeholder="Mathis"></b-input>
+                            <b-input v-model="form.prenom" placeholder="Clark"></b-input>
                         </b-field>
                     </div>
 
@@ -18,9 +18,9 @@
 
                     >
                         <b-input
-                            placeholder="lebgdu91@hotmail.com"
+                            placeholder="superman@smallville.com"
                             type="email"
-                            maxlength="30"
+                            maxlength="70"
                             v-model="form.email">
                         </b-input>
                     </b-field>
@@ -30,7 +30,7 @@
                     </b-field>
 
                     <b-field label="Message">
-                        <b-input maxlength="200" type="textarea" v-model="form.message"
+                        <b-input maxlength="500" type="textarea" v-model="form.message"
                                  placeholder="Ton petit message pour nous..."></b-input>
                     </b-field>
                     <div class="is-flex">

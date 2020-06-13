@@ -29,7 +29,7 @@
                         </div>
                     </section>
                     <div class="is-flex">
-                        <button class="button m-auto add" type="submit">
+                        <button class="button m-auto add" type="submit" @click.prevent="">
                             Ajoutez au panier !
                         </button>
                     </div>

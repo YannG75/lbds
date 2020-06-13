@@ -138,16 +138,19 @@
     }
 
     .level-item {
+        padding-right: 30px;
+        transition:  padding-right .5s;
         .fa-search {
             position: absolute;
             cursor: pointer;
             left: 5px;
             opacity: 0.2;
+
         }
 
         input {
             padding-left: 0;
-            width: 30px;
+            width: 0;
             border: none;
             outline: none;
             margin-right: 15px;
@@ -190,6 +193,10 @@
                 color: #fafafa;
             }
         }
+    }
+
+    .opened {
+        padding-right: unset;
     }
 
     section.gridCenter {

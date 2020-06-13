@@ -5,11 +5,12 @@
 
             <div class="brandContainer" v-for="(brand, index) in getBrands" :key="index" >
                 <router-link :to="/brands/+brand.id">
-                    <img :src="brand.image" :alt="`brand.name logo`">
+                    <b-tooltip :label="`${brand.products.length} produit`"
+                               position="is-bottom">
+                        <img :src="brand.image" :alt="`brand.name logo`">
+                    </b-tooltip>
+
                 </router-link>
-                <span >
-                        {{brand.products.length}} produit
-                    </span>
             </div>
         </section>
         <section class="container grid">
