@@ -52,7 +52,9 @@
         justify-content: space-around;
     }
 
-
+    .b-tooltip {
+        display: unset;
+    }
 
     .brandContainer {
         width: 90px;
