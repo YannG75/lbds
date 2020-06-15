@@ -7,7 +7,7 @@
                 <router-link :to="/brands/+brand.id">
                     <b-tooltip :label="`${brand.products.length} produit`"
                                position="is-bottom">
-                        <img :src="brand.image" :alt="`brand.name logo`">
+                        <img :src="brand.image" :srcset="`${brand.image} 2x`" :alt="`brand.name logo`">
                     </b-tooltip>
 
                 </router-link>
@@ -56,6 +56,7 @@
 
     .brandContainer {
         width: 90px;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
