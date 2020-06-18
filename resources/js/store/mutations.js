@@ -1,19 +1,21 @@
+import {ToastProgrammatic as Toast} from 'buefy'
+
 const mutations = {
-    getLastNews (state, lastNews) {
+    getLastNews(state, lastNews) {
         state.lastNews = lastNews
     },
-    getRandomProducts (state, randomProducts) {
+    getRandomProducts(state, randomProducts) {
         state.randomProducts = randomProducts
     },
-    getProducts (state, Products) {
+    getProducts(state, Products) {
         state.products = Products
     },
 
-    getBrands (state, Brands) {
+    getBrands(state, Brands) {
         state.brands = Brands
     },
 
-    getNews (state, News) {
+    getNews(state, News) {
         state.news = News
     },
 
@@ -32,16 +34,38 @@ const mutations = {
     },
 
     getProduct(state, value) {
-            state.product = value
-        },
+        state.product = value
+    },
 
+    toastSuccess(state, value) {
+        Toast.open({
+            message: value.msg,
+            type: 'is-success'
+        })
+    },
+    toastFail(state, value) {
+        Toast.open({
+            duration: 5000,
+            message: value.msg,
+            position: 'is-bottom',
+            type: 'is-danger'
+        })
+    },
 
+    addToCart(state, value) {
+        this.commit('toastSuccess', {msg: "yay c'est dans le panier !"})
+        let stop = false
+            state.cart.products.forEach(item => {
+                if ((item.id === value.id) && item.size === value.size) {
+                    item.quantity++
+                    stop = true
+                }
 
-
-
-
-
-
+            })
+        if (stop)
+            return
+        state.cart.products.push(value)
+    },
 
 }
 

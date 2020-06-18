@@ -52,4 +52,8 @@
         grid-template-columns: repeat(auto-fill, 240px);
     }
 
+    img {
+        object-fit: cover;
+    }
+
 </style>

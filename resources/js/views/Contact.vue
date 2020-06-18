@@ -92,21 +92,6 @@
                 this.form.message = ''
             },
 
-            success(msg) {
-                this.$buefy.toast.open({
-                    message: msg,
-                    type: 'is-success'
-                })
-            },
-            danger() {
-                this.$buefy.toast.open({
-                    duration: 5000,
-                    message: `Something's not good, also I'm on bottom`,
-                    position: 'is-bottom',
-                    type: 'is-danger'
-                })
-            },
-
             sendMail() {
                 this.openLoading()
                 axios.post(
@@ -118,8 +103,12 @@
                         console.log(res.data)
                         if (res.status === 200) {
                             this.isLoading = false
-                            this.success(res.data.msg)
+                            this.toastSuccess(res.data.msg)
                             this.clearForm()
+                        }
+
+                        else {
+                            this.commit('toastFail')
                         }
                     })
             }

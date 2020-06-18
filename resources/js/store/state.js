@@ -7,7 +7,10 @@ const state = {
     brand: {},
     product: {},
     search: '',
-    searchResult: {}
+    searchResult: {},
+    cart: {
+        products : []
+    }
 }
 
 export default state

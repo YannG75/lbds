@@ -24,7 +24,7 @@
                     <router-link to="/basket">
                         <div class="btn-basket is-flex">
                             <i class="fas fa-shopping-cart"></i>
-                            <div class="basket-items"><span>2 items</span></div>
+                            <div class="basket-items"><span>{{cart.products.length}} {{cart.products.length >1 ? 'items': 'item'}}</span></div>
                         </div>
                     </router-link>
                 </section>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+    import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
     export default {
         name: "App",
         data() {
@@ -63,7 +64,28 @@
             }
         },
 
+        computed: {
+            ...mapState(['cart'])
+        },
 
+        mounted() {
+            if (localStorage.cart)
+                this.$store.state.cart = JSON.parse(localStorage.getItem('cart'))
+        },
+
+
+        watch: {
+                cart: {
+                    handler: function (val, oldVal) {
+                        if (localStorage.getItem('cart') !== val)
+                        localStorage.setItem('cart',JSON.stringify(val))
+                        if(JSON.parse(localStorage.getItem('cart')).products.length === 0)
+                            localStorage.removeItem('cart')
+                    },
+                    deep: true
+                }
+
+        },
         methods: {
             goToSearchRoute() {
                 this.$router.replace('/search/' + this.search)

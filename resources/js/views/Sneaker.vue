@@ -29,7 +29,7 @@
                         </div>
                     </section>
                     <div class="is-flex">
-                        <button class="button m-auto add" type="submit" @click.prevent="">
+                        <button class="button is-primary is-outlined m-auto add" type="submit" @click.prevent="addToCart">
                             Ajoutez au panier !
                         </button>
                     </div>
@@ -65,6 +65,13 @@
         methods: {
             getUrl(index) {
                 return this.sneaker.images[index].image
+            },
+
+            addToCart(){
+                if(this.taille === undefined )
+                    this.$store.commit('toastFail', {msg : 'oups il faut choisir une taille 😅'})
+                else
+                this.$store.commit('addToCart',{id: this.sneaker.id,product : this.sneaker, size: this.taille, quantity: 1, price: this.sneaker.price})
             }
         }
     }
@@ -107,9 +114,11 @@
         color: lightgray;
     }
 
+    .button {
+        border-radius: 4px;
+    }
     .add {
         color: #3cd07d;
-        border-radius: unset;
         transition: all ease-in 300ms;
     }
 
