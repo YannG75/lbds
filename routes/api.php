@@ -27,6 +27,7 @@ Route::get('/news', 'ActuController@index');
 Route::get('/news/latest', 'ActuController@lastNews');
 Route::get('/news/{id}', 'ActuController@show');
 Route::post('/contact', 'ContactController@sendMail');
+Route::post('/order', 'OrderController@store');
 
 
 

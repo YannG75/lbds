@@ -100,17 +100,13 @@
                     {headers: {'Content-Type': 'application/json'}}
                 )
                     .then(res => {
-                        console.log(res.data)
-                        if (res.status === 200) {
                             this.isLoading = false
-                            this.toastSuccess(res.data.msg)
+                            this.$store.commit('toastSuccess',{msg : res.data.msg} )
                             this.clearForm()
-                        }
-
-                        else {
-                            this.commit('toastFail')
-                        }
                     })
+                .catch( err => {
+                    this.$store.commit('toastFail', {msg : err.response})
+                })
             }
         }
     }

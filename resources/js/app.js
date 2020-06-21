@@ -1,17 +1,20 @@
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store'
 import Buefy from 'buefy'
 import moment from 'moment'
+import Vuelidate from 'vuelidate'
+import VueMask from 'v-mask'
+Vue.use(VueMask);
 
 Vue.prototype.$moment = moment
 
 Vue.use(Buefy,{
     defaultIconPack: 'fas',
 })
-
+Vue.use(Vuelidate)
 Vue.use(VueRouter)
-
 import  Home from './views/Home'
 import App from './views/App'
 import Brand from "./views/Brands";
@@ -22,6 +25,7 @@ import Sneaker from "./views/Sneaker";
 import Article from "./views/Article";
 import Basket from "./views/Basket";
 import Contact from "./views/Contact";
+import Order from "./views/Order";
 
 
 const router = new VueRouter({
@@ -79,6 +83,12 @@ const router = new VueRouter({
             path: '/contact',
             name: 'contact',
             component: Contact
+        },
+
+        {
+            path: '/order',
+            name: 'order',
+            component: Order
         },
 
 

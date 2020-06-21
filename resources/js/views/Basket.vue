@@ -11,7 +11,7 @@
                         <h3 class="title is-6 ">{{item.product.name}}</h3>
 
                         <b-field>
-                            <b-numberinput v-model="cart.products[i].quantity" :editable=false min="0" controls-position="compact"></b-numberinput>
+                            <b-numberinput v-model="cart.products[i].quantity" :editable=false min="1" controls-position="compact"></b-numberinput>
                         </b-field>
 
                         <b-button type="is-text" @click="delSneaker(i)"><i class="fas fa-times"></i></b-button>
@@ -28,8 +28,9 @@
                     <article class="is-size-4"><b>subtotal :</b> <span>{{subtotal}} €</span></article>
                     <article class="is-size-4"><b>Taxes :</b> <span>Free</span></article>
                     <article class="is-size-4"><b>Total price :</b> <span>{{subtotal}} €</span></article>
-
-                    <b-button type="is-success" class="add" outlined>Valider le panier</b-button>
+                    <router-link to="/order">
+                    <b-button v-if="cart.products.length !== 0" type="is-success" class="add" outlined>Valider le panier</b-button>
+                    </router-link>
                 </div>
             </div>
         </div>

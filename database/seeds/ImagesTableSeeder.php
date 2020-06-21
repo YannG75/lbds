@@ -16,7 +16,7 @@ class ImagesTableSeeder extends Seeder
         $images = json_decode($getJson);
 
         foreach ($images as $singleImage){
-            Cloudder::upload(storage_path('images/'.$singleImage->image),null,['folder'=>'LBDS-Online/images']);
+            Cloudder::upload(storage_path('images/'.$singleImage->image),null,['folder'=>'LBDS/images']);
             $imageUrl = Cloudder::getResult();
             $image = new Image();
             $image->image = $imageUrl['secure_url'];

@@ -1,18 +1,184 @@
 <template>
+    <div class="container">
+        <b-steps class="mt" v-model="activeStep">
+            <b-step-item label="Adresse " icon="address-card">
+                <Personal :form="form" :error="error" :v="$v"></Personal>
+            </b-step-item>
+            <b-step-item label="Informations bancaire" icon="credit-card">
+                <Payment ref="child"></Payment>
+            </b-step-item>
+            <b-step-item label="Recap" icon="thumbs-up">
+                <Recap :form="form" :payment="payment" :cart="cart"></Recap>
+            </b-step-item>
+            <b-step-item label="Confirm" icon="check-circle">
 
+            </b-step-item>
+
+            <template
+                v-if="customNavigation"
+                slot="navigation"
+                slot-scope="{previous, next}">
+                <div class="is-flex around">
+                    <b-button
+                        outlined
+                        type="is-danger"
+                        icon-pack="fas"
+                        icon-left="backward"
+                        :disabled="previous.disabled"
+                        @click.prevent="previous.action">
+                        Back
+                    </b-button>
+                    <b-button
+                        type="is-success"
+                        icon-pack="fas"
+                        icon-right="forward"
+                        :disabled="next.disabled"
+                        @click.prevent="[submit(), error ? '' : next.action()]">
+                        {{activeStep === 2 ? 'Confirmer la commande' : 'Valider'}}
+                    </b-button>
+                </div>
+
+            </template>
+        </b-steps>
+    </div>
 </template>
 
 <script>
+    import Personal from "../components/Personal";
+    import Payment from "../components/Payment";
+    import Recap from "../components/Recap";
+    import {required, email} from "vuelidate/lib/validators";
+
     export default {
         name: "Order",
-        data(){
+        components: {
+            Personal,
+            Payment,
+            Recap
+        },
+        data() {
             return {
+                customNavigation: true,
+                activeStep: 0,
+                form: {
+                    lastname: '',
+                    firstname: '',
+                    email: '',
+                    address: ''
+                },
+                cart: {},
+                error: false,
+                payment : {}
 
+            }
+        },
+        beforeMount() {
+            if (!localStorage.cart) {
+            window.location.replace('/')
+            }
+
+            this.cart = JSON.parse(localStorage.cart)
+        },
+        validations: {
+            form: {
+                lastname: {
+                    required
+                },
+                firstname: {
+                    required,
+                },
+                email: {
+                    required,
+                    email
+                },
+                address: {
+                    required
+                }
+            },
+
+
+        },
+        methods: {
+            submit() {
+                switch (this.activeStep) {
+                        case 0 :
+                            this.$v.form.$touch()
+                            if (this.$v.$invalid) {
+                                this.error = true
+                            }
+                            else {
+                                this.error = false
+                            }
+                            break
+                    case 1:
+                        this.$refs.child.$v.$touch()
+                        if (this.$refs.child.$v.$invalid)
+                            this.error = true
+                        else
+                            this.payment = {
+                                cardName : this.$refs.child.cardName,
+                                cardNumber : this.$refs.child.cardNumber,
+                                cardMonth : this.$refs.child.cardMonth,
+                                cardYear : this.$refs.child.cardYear,
+                            }
+                            this.error = false
+                        break
+
+                    case 2:
+                            this.$store.dispatch('sendOrder',{customer: this.form, products: this.cart.products })
+                }
             }
         }
     }
 </script>
 
-<style scoped>
+<style lang="scss">
+    .b-steps {
+        padding: 5px;
+    }
 
+    .around {
+        justify-content: space-around;
+    }
+    .between {
+        justify-content: space-between;
+    }
+
+    .error {
+        color: #ff777d !important;
+
+        label {
+            color: #ff777d !important;
+        }
+
+
+
+        input {
+            border-color: #ff777d !important;
+            box-shadow: #ff777d 0 1px 2px !important;
+        }
+
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%, 80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%, 60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+    }
 </style>

@@ -38,6 +38,7 @@ const mutations = {
     },
 
     toastSuccess(state, value) {
+        console.log('yes')
         Toast.open({
             message: value.msg,
             type: 'is-success'

@@ -63,8 +63,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-
+        a {
+            min-width: 75px;
+        }
         img {
             width: 100%;
             object-fit: cover;
