@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <section class="columns mt">
+        <section class="columns mt" v-if="sneaker !== null">
             <b-carousel class="column" :indicator-inside="false" :autoplay="false" :indicator-custom="true"
                         :indicator-custom-size="`is-medium`" :key="$route.path">
                 <b-carousel-item v-for="(item, i) in sneaker.images" :key="i">
@@ -37,6 +37,10 @@
             </article>
         </section>
 
+        <b-message v-else type="is-danger" has-icon class="mt mb ">
+            Ce produit n'existe pas !
+        </b-message>
+
     </div>
 </template>
 
@@ -56,10 +60,13 @@
             }
         },
         computed: {},
-        mounted() {
+        beforeMount() {
             axios.get('/api/products/' + this.$route.params.id)
                 .then(res => {
                     this.sneaker = res.data
+                })
+                .catch( err => {
+                    this.sneaker = null
                 })
         },
         methods: {

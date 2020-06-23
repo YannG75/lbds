@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="daddy">
         <b-navbar :shadow="true">
             <template slot="brand">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
@@ -39,7 +39,7 @@
 
             </template>
         </b-navbar>
-        <router-view :key="$route.path"></router-view>
+        <router-view :key="$route.path" class="view"></router-view>
         <footer class="footer mt">
             <div class="content has-text-centered ">
                 <p>
@@ -104,6 +104,19 @@
     @import "~bulma";
     @import "~buefy/src/scss/buefy";
 
+    .view {
+        position: relative;
+        min-height: 67vh;
+    }
+
+    .footer {
+        bottom: 0;
+        width: 100%;
+        height: 2.5rem;
+        clear: both;
+        position: relative;
+
+    }
 
     ::-webkit-scrollbar {
         width: 10px;
