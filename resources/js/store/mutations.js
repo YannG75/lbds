@@ -38,7 +38,6 @@ const mutations = {
     },
 
     toastSuccess(state, value) {
-        console.log('yes')
         Toast.open({
             message: value.msg,
             type: 'is-success'
@@ -67,6 +66,20 @@ const mutations = {
             return
         state.cart.products.push(value)
     },
+
+    confirmOrder(state, value) {
+        if (value)
+        state.order_success = value.state
+
+        else
+            state.order_success = false
+    },
+
+    emptyCart(state) {
+        state.cart = {
+            products : []
+        }
+    }
 
 }
 

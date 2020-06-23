@@ -11,6 +11,7 @@ const state = {
     cart: {
         products : []
     },
+    order_success: ''
 
 }
 

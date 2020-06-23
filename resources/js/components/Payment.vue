@@ -159,7 +159,7 @@
 </template>
 
 <script>
-    import {email, required} from "vuelidate/lib/validators";
+    import {email, required,minLength} from "vuelidate/lib/validators";
 
     export default {
         name: "Payment",
@@ -183,9 +183,11 @@
         validations: {
             cardName: {
                     required
+
                 },
             cardNumber: {
                     required,
+                minLength: minLength(19)
                 },
             cardMonth: {
                     required,
@@ -195,7 +197,8 @@
                     required
                 },
             cardCvv: {
-            required
+            required,
+                minLength: minLength(3)
             }
         },
 

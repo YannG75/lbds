@@ -73,7 +73,14 @@ const actions = {
             {headers: {'Content-Type': 'application/json'}}
         )
             .then( res => {
-                console.log(res.data)
+                commit('confirmOrder', {state : true})
+                commit('emptyCart', {state : true})
+
+            })
+            .catch(err => {
+                commit('toastFail', {msg : err.response.data.msg})
+                commit('confirmOrder', {state : false})
+
             })
     }
 

@@ -105,7 +105,9 @@
                             this.clearForm()
                     })
                 .catch( err => {
-                    this.$store.commit('toastFail', {msg : err.response})
+                    this.isLoading = false
+                    this.$store.commit('toastFail', {msg : err.response.data.msg})
+
                 })
             }
         }

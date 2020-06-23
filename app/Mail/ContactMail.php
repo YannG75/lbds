@@ -34,7 +34,8 @@ class ContactMail extends Mailable
             ->from($this->messageData->email , $this->messageData->name)
             ->subject($this->messageData->subject)
             ->with([
-                'msg' => $this->messageData->message,
+                'contact' => true,
+                'msg' => $this->messageData->message
             ]);
 
     }
