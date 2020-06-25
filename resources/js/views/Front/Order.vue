@@ -1,56 +1,71 @@
 <template>
-    <div class="container">
-        <b-loading  :active.sync="isLoading" ></b-loading>
-        <b-steps class="mt" v-model="activeStep">
-            <b-step-item label="Adresse " icon="address-card" :clickable=false>
-                <Personal :form="form" :error="error" :v="$v"></Personal>
-            </b-step-item>
-            <b-step-item label="Informations bancaire" icon="credit-card" :clickable=false>
-                <Payment ref="child"></Payment>
-            </b-step-item>
-            <b-step-item label="Recap" icon="thumbs-up" :clickable=false>
-                <Recap :form="form" :payment="payment" :cart="cart"></Recap>
-            </b-step-item>
-            <b-step-item label="Confirm" icon="check-circle">
-                <Confirm></Confirm>
-            </b-step-item>
+    <div>
+        <navigation></navigation>
+        <div class="container pb">
+            <b-loading  :active.sync="isLoading" ></b-loading>
+            <b-steps class="mt" v-model="activeStep">
+                <b-step-item label="Adresse " icon="address-card" :clickable=false>
+                    <Personal :form="form" :error="error" :v="$v"></Personal>
+                </b-step-item>
+                <b-step-item label="Informations bancaire" icon="credit-card" :clickable=false>
+                    <Payment ref="child"></Payment>
+                </b-step-item>
+                <b-step-item label="Recap" icon="thumbs-up" :clickable=false>
+                    <Recap :form="form" :payment="payment" :cart="cart"></Recap>
+                </b-step-item>
+                <b-step-item label="Confirm" icon="check-circle">
+                    <Confirm></Confirm>
+                </b-step-item>
 
-            <template
-                v-if="customNavigation"
-                slot="navigation"
-                slot-scope="{previous, next}">
-                <div class="is-flex around">
-                    <b-button
-                        v-if=" activeStep < 3"
-                        outlined
-                        type="is-danger"
-                        icon-pack="fas"
-                        icon-left="backward"
-                        :disabled="previous.disabled"
-                        @click.prevent="previous.action">
-                        Back
-                    </b-button>
-                    <b-button
-                        v-if=" activeStep < 3"
-                        type="is-success"
-                        icon-pack="fas"
-                        icon-right="forward"
-                        :disabled="next.disabled"
-                        @click.prevent="[submit(next), error ? '' : next.action()]">
-                        {{activeStep === 2 ? 'Confirmer la commande' : 'Valider'}}
-                    </b-button>
-                </div>
+                <template
+                    v-if="customNavigation"
+                    slot="navigation"
+                    slot-scope="{previous, next}">
+                    <div class="is-flex around">
+                        <b-button
+                            v-if=" activeStep < 3"
+                            outlined
+                            type="is-danger"
+                            icon-pack="fas"
+                            icon-left="backward"
+                            :disabled="previous.disabled"
+                            @click.prevent="previous.action">
+                            Back
+                        </b-button>
+                        <b-button
+                            v-if=" activeStep < 3"
+                            type="is-success"
+                            icon-pack="fas"
+                            icon-right="forward"
+                            :disabled="next.disabled"
+                            @click.prevent="[submit(next), error ? '' : next.action()]">
+                            {{activeStep === 2 ? 'Confirmer la commande' : 'Valider'}}
+                        </b-button>
+                    </div>
 
-            </template>
-        </b-steps>
+                </template>
+            </b-steps>
+        </div>
+        <footer class="footer mt">
+            <div class="content has-text-centered ">
+                <p>
+                    <strong>LBDS</strong> by <em>Yann Grillon</em>. The source code is licensed.
+                    The website content is licensed.
+                    <br>
+                    © Copyright
+                </p>
+            </div>
+        </footer>
     </div>
+
 </template>
 
 <script>
-    import Personal from "../components/Personal";
-    import Payment from "../components/Payment";
-    import Recap from "../components/Recap";
-    import Confirm from "../components/Confirm";
+    import navigation from "../../components/Navigation";
+    import Personal from "../../components/Personal";
+    import Payment from "../../components/Payment";
+    import Recap from "../../components/Recap";
+    import Confirm from "../../components/Confirm";
     import {required, email} from "vuelidate/lib/validators";
 
     export default {
@@ -59,7 +74,8 @@
             Personal,
             Payment,
             Recap,
-            Confirm
+            Confirm,
+            navigation
         },
         data() {
             return {

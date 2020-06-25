@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <navigation></navigation>
         <caroussel :getLastNews="getLastNews"></caroussel>
 
         <section class="gridCenter">
@@ -52,19 +52,31 @@
             </div>
 
         </section>
-
+        <footer class="footer mt">
+            <div class="content has-text-centered ">
+                <p>
+                    <strong>LBDS</strong> by <em>Yann Grillon</em>. The source code is licensed.
+                    The website content is licensed.
+                    <br>
+                    © Copyright
+                </p>
+            </div>
+        </footer>
     </div>
 </template>
 
 <script>
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
-    import caroussel from "../components/caroussel"
+    import caroussel from "../../components/caroussel"
+    import navigation from "../../components/Navigation";
 
 
     export default {
         name: "Home",
         components: {
-            caroussel
+            caroussel,
+            navigation
+
         },
         data() {
             return {

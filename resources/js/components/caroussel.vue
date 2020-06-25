@@ -2,10 +2,7 @@
     <b-carousel :indicator-style="`is-boxes`" >
         <b-carousel-item  v-for="(news, i) in getLastNews" :key="i">
             <section :class="`hero is-large`">
-                <div class="hero-body is-5by3">
-                    <figure class="image is-5by3 is-absolute l-0 t-0">
-                        <img :src="news.banner" alt="news banner">
-                    </figure>
+                <div class="hero-body is-5by3" :style="`background: url('${news.banner}') center no-repeat; background-size: cover`">
                     <section class="is-flex index">
                         <div class="column">
                             <h1 class="title">{{news.title}}</h1>
@@ -50,4 +47,11 @@
         width: 100%;
         height: 80vh;
     }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 </style>

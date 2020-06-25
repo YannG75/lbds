@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h1 class="is-size-2 has-text-centered mt mb">Toutes les Sneakers</h1>
+        <navigation></navigation>
+        <h1 class="is-size-2 has-text-centered mt mb pb">Toutes les Sneakers</h1>
         <section class="container is-flex justify-content-around p-3 brandBar">
 
             <div class="brandContainer" v-for="(brand, index) in getBrands" :key="index" >
@@ -16,17 +17,29 @@
         <section class="container grid">
             <AllProducts v-for="(sneaker, index) in getProducts" :sneaker="sneaker" :key="index"></AllProducts>
         </section>
+        <footer class="footer mt">
+            <div class="content has-text-centered ">
+                <p>
+                    <strong>LBDS</strong> by <em>Yann Grillon</em>. The source code is licensed.
+                    The website content is licensed.
+                    <br>
+                    © Copyright
+                </p>
+            </div>
+        </footer>
     </div>
 </template>
 
 <script>
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
-    import AllProducts from "../components/AllProducts";
+    import navigation from "../../components/Navigation";
+    import AllProducts from "../../components/AllProducts";
 
     export default {
         name: "Products",
         components: {
-            AllProducts
+            AllProducts,
+            navigation
         },
         computed: {
             ...mapGetters(['getProducts', 'getBrands'])

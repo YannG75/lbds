@@ -1,44 +1,58 @@
 <template>
-    <div class="container">
-        <div class="columns">
-            <div class="column is-two-thirds">
-                <h2 class="is-size-2 has-text-grey-dark mt mb ">Panier :</h2>
-                <template v-if="cart.products.length !== 0">
-                    <div  class="is-flex product-card" v-for="(item, i) in cart.products" :key="i">
-                        <figure class="image is-128x128 is-flex">
-                            <img class="" :src="item.product.image" alt="Placeholder image">
-                        </figure>
-                        <h3 class="title is-6 ">{{item.product.name}}</h3>
+    <div>
+        <navigation></navigation>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-thirds">
+                    <h2 class="is-size-2 has-text-grey-dark mt mb ">Panier :</h2>
+                    <template v-if="cart.products.length !== 0">
+                        <div  class="is-flex product-card" v-for="(item, i) in cart.products" :key="i">
+                            <figure class="image is-128x128 is-flex">
+                                <img class="" :src="item.product.image" alt="Placeholder image">
+                            </figure>
+                            <h3 class="title is-6 ">{{item.product.name}}</h3>
 
-                        <b-field>
-                            <b-numberinput v-model="cart.products[i].quantity" :editable=false min="1" controls-position="compact"></b-numberinput>
-                        </b-field>
+                            <b-field>
+                                <b-numberinput v-model="cart.products[i].quantity" :editable=false min="1" controls-position="compact"></b-numberinput>
+                            </b-field>
 
-                        <b-button type="is-text" @click="delSneaker(i)"><i class="fas fa-times"></i></b-button>
+                            <b-button type="is-text" @click="delSneaker(i)"><i class="fas fa-times"></i></b-button>
+                        </div>
+                    </template>
+
+                    <div v-else>
+                        <h4 class="is-size-3">Votre panier est vide pour le moment !</h4>
                     </div>
-                </template>
-
-                <div v-else>
-                    <h4 class="is-size-3">Votre panier est vide pour le moment !</h4>
                 </div>
-            </div>
-            <div class="column dark">
-                <h2 class="is-size-2 mt mb ">details :</h2>
-                <div class="is-flex cart-described">
-                    <article class="is-size-4"><b>subtotal :</b> <span>{{subtotal}} €</span></article>
-                    <article class="is-size-4"><b>Taxes :</b> <span>Free</span></article>
-                    <article class="is-size-4"><b>Total price :</b> <span>{{subtotal}} €</span></article>
-                    <router-link to="/order">
-                    <b-button v-if="cart.products.length !== 0" type="is-success" class="add" outlined>Valider le panier</b-button>
-                    </router-link>
+                <div class="column dark">
+                    <h2 class="is-size-2 mt mb ">details :</h2>
+                    <div class="is-flex cart-described">
+                        <article class="is-size-4"><b>subtotal :</b> <span>{{subtotal}} €</span></article>
+                        <article class="is-size-4"><b>Taxes :</b> <span>Free</span></article>
+                        <article class="is-size-4"><b>Total price :</b> <span>{{subtotal}} €</span></article>
+                        <router-link to="/order">
+                            <b-button v-if="cart.products.length !== 0" type="is-success" class="add" outlined>Valider le panier</b-button>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
-
+        <footer class="footer mt">
+            <div class="content has-text-centered ">
+                <p>
+                    <strong>LBDS</strong> by <em>Yann Grillon</em>. The source code is licensed.
+                    The website content is licensed.
+                    <br>
+                    © Copyright
+                </p>
+            </div>
+        </footer>
     </div>
+
 </template>
 
 <script>
+    import navigation from "../../components/Navigation";
     export default {
         name: "basket",
         data() {
@@ -49,6 +63,9 @@
                 },
                 subtotal : 0
             }
+        },
+        components: {
+          navigation
         },
         mounted() {
             if (localStorage.cart){

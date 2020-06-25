@@ -1,8 +1,9 @@
 <template>
     <div>
+        <navigation></navigation>
         <h1 class="is-size-2 has-text-centered mt mb">Les dernières SneakNews</h1>
 
-        <section class="container grid">
+        <section class="container grid pb">
             <div class="card is-shadowless is-pointed" v-for="(news, index) in getNews" :key="index">
                 <router-link :to="/news/+news.id">
                     <div class="Hovered is-absolute">
@@ -25,16 +26,29 @@
 
             </div>
         </section>
-
+        <footer class="footer mt">
+            <div class="content has-text-centered ">
+                <p>
+                    <strong>LBDS</strong> by <em>Yann Grillon</em>. The source code is licensed.
+                    The website content is licensed.
+                    <br>
+                    © Copyright
+                </p>
+            </div>
+        </footer>
     </div>
 
 </template>
 
 <script>
+    import navigation from "../../components/Navigation";
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
 
     export default {
         name: "News",
+        components: {
+            navigation
+        },
         computed: {
             ...mapGetters(['getNews'])
         },

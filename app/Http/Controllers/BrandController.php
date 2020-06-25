@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JD\Cloudder\Facades\Cloudder;
 
 class BrandController extends Controller
 {
@@ -26,18 +28,38 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'banner' => 'required',
+            'image' => 'required',
+        ]);
+
+        $requestedBrand = $request->all();
+
+        Cloudder::upload($requestedBrand['banner']->getRealPath(),null,['folder'=>'LBDS/brands/banner']);
+        $banner = Cloudder::getResult();
+        Cloudder::upload($requestedBrand['image']->getRealPath(),null,['folder'=>'LBDS/brands']);
+        $image = Cloudder::getResult();
+
+        $brand = new Brand();
+        $brand->name = $requestedBrand['name'];
+        $brand->image = $image['secure_url'];
+        $brand->banner = $banner['secure_url'];
+        $brand->description = $requestedBrand['description'];
+        $brand->save();
+
+        return response()->json($brand);
     }
 
     /**
@@ -66,7 +88,7 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param Brand $brand
      * @return \Illuminate\Http\Response
      */
@@ -84,5 +106,13 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         //
+    }
+
+
+    public function delete($id, Brand $brand) {
+        $currentBrand = $brand->findOrFail($id);
+         $currentBrand->delete();
+
+         return response()->json(['msg'=> 'Suppression effectué avec succès ! 😇']);
     }
 }

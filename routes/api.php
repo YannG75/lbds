@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 
 Route::get('/brands', 'BrandController@index');
+Route::post('/brands', 'BrandController@store');
 Route::get('/brands/{id}', 'BrandController@show');
+Route::post('/brands/{id}', 'BrandController@delete');
 Route::get('/products', 'ProductController@index');
 Route::get('/products/{id}', 'ProductController@show');
 Route::get('/news', 'ActuController@index');
@@ -28,6 +30,5 @@ Route::get('/news/latest', 'ActuController@lastNews');
 Route::get('/news/{id}', 'ActuController@show');
 Route::post('/contact', 'ContactController@sendMail');
 Route::post('/order', 'OrderController@store');
-
 
 

@@ -1,6 +1,8 @@
 <template :key="change">
-    <div class="container" >
-        <h1 class="is-size-2 has-text-centered mt mb">Resultats pour "{{search}}"</h1>
+    <div>
+        <navigation></navigation>
+        <div class="container pb" >
+            <h1 class="is-size-2 has-text-centered mt mb">Resultats pour "{{search}}"</h1>
 
             <section class="grid">
                 <AllProducts v-for="(sneaker, index) in getSearchResult.data" :sneaker="sneaker" :key="index"></AllProducts>
@@ -18,13 +20,26 @@
                 @change="pageChange">
 
             </b-pagination>
+        </div>
+        <footer class="footer mt">
+            <div class="content has-text-centered ">
+                <p>
+                    <strong>LBDS</strong> by <em>Yann Grillon</em>. The source code is licensed.
+                    The website content is licensed.
+                    <br>
+                    © Copyright
+                </p>
+            </div>
+        </footer>
     </div>
+
 
 </template>
 
 <script>
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
-    import AllProducts from "../components/AllProducts";
+    import navigation from "../../components/Navigation";
+    import AllProducts from "../../components/AllProducts";
 
 
     export default {
@@ -35,7 +50,8 @@
             }
         },
         components:{
-            AllProducts: AllProducts
+            AllProducts,
+            navigation
         },
 
         computed: {
