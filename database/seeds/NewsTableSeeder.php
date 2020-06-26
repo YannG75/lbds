@@ -1,6 +1,7 @@
 <?php
 
 use App\Actu;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class NewsTableSeeder extends Seeder
@@ -26,6 +27,7 @@ class NewsTableSeeder extends Seeder
             $news->banner = $banner['secure_url'];
             $news->summary = $article->summary;
             $news->content = $article->content;
+            $news->publish_date = Carbon::now();
             $news->save();
         }
     }

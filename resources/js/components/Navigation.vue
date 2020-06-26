@@ -1,5 +1,5 @@
 <template>
-    <b-navbar :shadow="true">
+    <b-navbar :shadow="true" class="global">
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
                 <img src="/images/logo.png"/>
@@ -23,13 +23,14 @@
                 <router-link to="/basket">
                     <div class="btn-basket is-flex">
                         <i class="fas fa-shopping-cart"></i>
-                        <div class="basket-items"><span>{{cart.products.length}} {{cart.products.length >1 ? 'items': 'item'}}</span></div>
+                        <div class="basket-items"><span>{{cart.products.length}} {{cart.products.length >1 ? 'items': 'item'}}</span>
+                        </div>
                     </div>
                 </router-link>
             </section>
 
             <div class="level-item is-relative" :class="{'opened': openSearch}">
-                <i class="fas fa-search" @click="openSearch = !openSearch" ></i>
+                <i class="fas fa-search" @click="openSearch = !openSearch"></i>
                 <input type="search" v-model="search" :class="{'open': openSearch}"
                        @keypress.enter="goToSearchRoute">
 
@@ -42,6 +43,7 @@
 
 <script>
     import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
+
     export default {
         name: "navigation",
         data() {
@@ -65,8 +67,8 @@
             cart: {
                 handler: function (val, oldVal) {
                     if (localStorage.getItem('cart') !== val)
-                        localStorage.setItem('cart',JSON.stringify(val))
-                    if(JSON.parse(localStorage.getItem('cart')).products.length === 0)
+                        localStorage.setItem('cart', JSON.stringify(val))
+                    if (JSON.parse(localStorage.getItem('cart')).products.length === 0)
                         localStorage.removeItem('cart')
                 },
                 deep: true
@@ -102,8 +104,7 @@
     .navbar-link::after {
         border-color: #3cd07d !important;
     }
-    .navbar-start {
-        flex-grow: 1;
-        justify-content: center;
-    }
+
+
+
 </style>

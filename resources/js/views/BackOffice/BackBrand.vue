@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="has-text-centered is-size-1 has-text-grey-light">Les Marques</h1>
+        <h1 class="has-text-centered is-size-1 has-text-grey-light">Les Produits</h1>
 
         <div class="container mt mb">
             <div class="is-flex addBtn">
@@ -18,7 +18,7 @@
 
                 <div class="is-flex around">
                     <b-button type="is-info"
-                              icon-right="edit" />
+                              icon-right="edit" @click="[edit(brand),isComponentModalActive = true]"/>
                     <b-button type="is-danger"
                               icon-right="trash" @click="deleteBrand(brand.id)"/>
                 </div>
@@ -31,7 +31,7 @@
                  :destroy-on-hide="false"
                  aria-role="dialog"
                  aria-modal>
-            <modal-form></modal-form>
+            <modal-form :brand="changeBrand" :key="modalKey"></modal-form>
         </b-modal>
     </div>
 </template>
@@ -45,53 +45,74 @@
         data() {
             return {
                 isComponentModalActive: false,
-
+                brand: {},
+                modalKey: 1
             }
         },
         computed: {
-            ...mapGetters(['getBrands'])
+            ...mapGetters(['getBrands']),
+            changeBrand() {
+                if (this.isComponentModalActive === false && this.brand.length !== 0){
+                    this.modalKey--
+                    return this.brand = {}
+                }
+                else
+                {
+                    this.modalKey++
+                    return this.brand
+                }
+
+            }
         },
         mounted() {
             this.GetAllBrands()
         },
         methods: {
             ...mapActions({
-                GetAllBrands : 'GetAllBrands',
-                deleteBrand : 'admin/delete'
+                GetAllBrands: 'GetAllBrands',
+                deleteBrand: 'admin/deleteBrand'
             }),
-        },components: {
+
+            edit(currentBrand) {
+                this.brand = currentBrand
+            },
+        }, components: {
             ModalForm
         },
 
     }
 </script>
 
-<style scoped lang="scss">
-    .card {
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .is-flex {
-        img {
-            object-fit: contain;
+<style lang="scss">
+    .admin {
+        .card {
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
         }
-    }
 
-    .around {
-        justify-content: space-around;
-        width: 150px;
-    }
-    .addBtn {
-        max-width: 900px;
-        margin: auto;
-        justify-content: flex-end;
-        .add {
-            color: #3dd481;
+        .is-flex {
+            img {
+                object-fit: contain;
+            }
         }
-    }
 
+        .around {
+            justify-content: space-around;
+            width: 150px;
+        }
+
+        .addBtn {
+            max-width: 900px;
+            margin: auto;
+            justify-content: flex-end;
+
+            .add {
+                color: #3dd481;
+            }
+        }
+
+    }
 
 
 </style>

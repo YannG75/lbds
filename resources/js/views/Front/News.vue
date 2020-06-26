@@ -70,4 +70,9 @@
         object-fit: cover;
     }
 
+    .card {
+        max-width: unset;
+        margin: unset;
+    }
+
 </style>

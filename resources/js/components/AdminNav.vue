@@ -24,7 +24,7 @@
                 </a>
 
                 <b-dropdown-item custom aria-role="menuitem">
-                    Logged as <b>{{user.name}}</b>
+                    Connecté en tant que <b>{{user.name}}</b>
                 </b-dropdown-item>
                 <hr class="dropdown-divider">
                 <b-dropdown-item value="admin" aria-role="menuitem">
@@ -36,13 +36,13 @@
                 <b-dropdown-item value="adminBrands" aria-role="menuitem" >
                     <router-link :to="{ name: 'adminBrands' }">
                     <b-icon icon="tags"></b-icon>
-                    Brands
+                    Marques
                     </router-link>
                 </b-dropdown-item>
                 <b-dropdown-item value="adminProducts" aria-role="menuitem">
                     <router-link :to="{ name: 'adminProducts' }">
                     <b-icon icon="shopping-cart"></b-icon>
-                    Products
+                    Produits
                     </router-link>
                 </b-dropdown-item>
                 <b-dropdown-item value="adminNews" aria-role="menuitem" >
@@ -57,8 +57,8 @@
                 <!--                    Settings-->
                 <!--                </b-dropdown-item>-->
                 <b-dropdown-item value="logout" aria-role="menuitem" @click="signOut">
-                    <b-icon icon="logout"></b-icon>
-                    Logout
+                    <b-icon icon="power-off" class="has-text-danger"></b-icon>
+                    Déconnexion
                 </b-dropdown-item>
             </b-dropdown>
         </template>
@@ -118,15 +118,6 @@
     a.navbar-item:focus, .navbar-item:hover, .navbar-item a:hover, .navbar-item a:focus {
         color: #3ee28d !important;
         background: #4d4d4d;
-    }
-
-    .navbar-start {
-        justify-content: flex-start !important;
-    }
-
-    .navbar-start {
-        flex-grow: 1;
-        justify-content: flex-start;
     }
 
     a {

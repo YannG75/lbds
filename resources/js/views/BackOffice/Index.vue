@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <AdminNav></AdminNav>
-        <router-view class="pb"></router-view>
+        <router-view class="pb admin"></router-view>
         <footer class="footer mt">
             <div class="content has-text-centered ">
                 <p>

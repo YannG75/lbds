@@ -22,9 +22,9 @@ class CreateProductsTable extends Migration
             $table->string('color');
             $table->string('image');
             $table->integer('price');
-            $table->date('release_date');
+            $table->date('release_date')->nullable();
             $table->integer('brand_id');
-            $table->integer('actif')->default('1');
+            $table->boolean('actif')->default('true');
         });
     }
 

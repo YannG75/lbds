@@ -23,6 +23,12 @@
         position: relative;
         min-height: 100vh;
         padding-bottom: 8.5rem;
+        .global {
+            .navbar-start {
+                margin-left: auto;
+                margin-right: unset;
+            }
+        }
     }
 
     .footer {
