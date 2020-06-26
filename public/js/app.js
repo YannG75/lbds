@@ -25209,7 +25209,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".brandBar[data-v-58a9b489] {\n  border-radius: 5px;\n  box-shadow: #00d1b2 1px 1px 7px -2px;\n}\n.justify-content-around[data-v-58a9b489] {\n  justify-content: space-around;\n}\n.b-tooltip[data-v-58a9b489] {\n  display: unset;\n}\n.brandContainer[data-v-58a9b489] {\n  width: 90px;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.brandContainer a[data-v-58a9b489] {\n  min-width: 75px;\n}\n.brandContainer img[data-v-58a9b489] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
+exports.push([module.i, ".brandBar[data-v-58a9b489] {\n  border-radius: 5px;\n  box-shadow: #00d1b2 1px 1px 7px -2px;\n}\n.justify-content-around[data-v-58a9b489] {\n  justify-content: space-around;\n}\n.b-tooltip[data-v-58a9b489] {\n  display: unset;\n}\n.brandContainer[data-v-58a9b489] {\n  width: 90px;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.brandContainer a[data-v-58a9b489] {\n  min-width: 75px;\n}\n.brandContainer img[data-v-58a9b489] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n@media all and (max-width: 600px) {\n.brandContainer a[data-v-58a9b489] {\n    min-width: 40px;\n}\n}", ""]);
 
 // exports
 

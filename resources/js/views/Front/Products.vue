@@ -84,4 +84,14 @@
             object-fit: cover;
         }
     }
+
+    @media all and (max-width: 600px){
+        .brandContainer {
+
+            a {
+                min-width: 40px;
+            }
+
+        }
+    }
 </style>
