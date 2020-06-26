@@ -17,9 +17,9 @@ class NewsTableSeeder extends Seeder
         $actus = json_decode($getJson);
 
         foreach ($actus as $article){
-            Cloudder::upload(storage_path('images/'.$article->image),null,['folder'=>'LBDS/news']);
+            Cloudder::upload(storage_path('images/'.$article->image),null,['folder'=>'LBDS-Online/news']);
             $image = Cloudder::getResult();
-            Cloudder::upload(storage_path('images/'.$article->banner),null,['folder'=>'LBDS/news/banner']);
+            Cloudder::upload(storage_path('images/'.$article->banner),null,['folder'=>'LBDS-Online/news/banner']);
             $banner = Cloudder::getResult();
             $news = new Actu();
             $news->title = $article->title;

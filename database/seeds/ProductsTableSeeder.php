@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder
         $sneakers = json_decode($getJson);
 
         foreach ($sneakers as $sneaker){
-            Cloudder::upload(storage_path('images/'.$sneaker->image),null,['folder'=>'LBDS/products']);
+            Cloudder::upload(storage_path('images/'.$sneaker->image),null,['folder'=>'LBDS-Online/products']);
             $image = Cloudder::getResult();
             $product = new Product();
             $product->name = $sneaker->name;

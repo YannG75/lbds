@@ -17,9 +17,9 @@ class BrandsTableSeeder extends Seeder
         $brands = json_decode($getJson);
 
         foreach ($brands as $singleBrand){
-            Cloudder::upload(storage_path('images/'.$singleBrand->image),null,['folder'=>'LBDS/brands']);
+            Cloudder::upload(storage_path('images/'.$singleBrand->image),null,['folder'=>'LBDS-Online/brands']);
             $image = Cloudder::getResult();
-            Cloudder::upload(storage_path('images/'.$singleBrand->banner),null,['folder'=>'LBDS/brands/banner']);
+            Cloudder::upload(storage_path('images/'.$singleBrand->banner),null,['folder'=>'LBDS-Online/brands/banner']);
             $banner = Cloudder::getResult();
             $brand = new Brand();
             $brand->name = $singleBrand->name;
