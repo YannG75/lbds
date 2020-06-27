@@ -19,22 +19,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+
 Route::get('/brands', 'BrandController@index');
 Route::post('/brands', 'BrandController@store');
 Route::get('/brands/{id}', 'BrandController@show');
 Route::post('/brands/update/{id}', 'BrandController@update');
-Route::post('/brands/{id}', 'BrandController@delete');
+Route::delete('/brands/{id}', 'BrandController@delete');
 Route::get('/products', 'ProductController@index');
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{id}', 'ProductController@show');
+Route::delete('/products/image/{id}', 'ImageController@delete');
 Route::post('/products/update/{id}', 'ProductController@update');
-Route::post('/products/{id}', 'ProductController@delete');
+Route::delete('/products/{id}', 'ProductController@delete');
 Route::get('/news', 'ActuController@index');
 Route::post('/news', 'ActuController@store');
 Route::get('/news/latest', 'ActuController@lastNews');
 Route::get('/news/{id}', 'ActuController@show');
-Route::post('/news/update/{id}', 'ActuController@update');
-Route::post('/news/{id}', 'ActuController@delete');
+Route::post('/news/{id}', 'ActuController@update');
+Route::delete('/news/{id}', 'ActuController@delete');
 Route::post('/contact', 'ContactController@sendMail');
 Route::post('/order', 'OrderController@store');
 

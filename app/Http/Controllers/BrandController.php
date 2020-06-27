@@ -60,7 +60,7 @@ class BrandController extends Controller
             $brand->description = $requestedBrand['description'];
         $brand->save();
 
-        return response()->json($brand);
+        return response()->json(['msg' => 'Suppression effectué avec succès ! 😇']);
     }
 
     /**

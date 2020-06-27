@@ -23,7 +23,7 @@ class CreateActusTable extends Migration
             $table->text('content');
             $table->integer('author')->default(1);
             $table->integer('is_published')->default(1);
-            $table->date('publish_date');
+            $table->dateTime('publish_date');
         });
     }
 

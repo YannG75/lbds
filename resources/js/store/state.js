@@ -4,6 +4,7 @@ const state = {
     products: [],
     brands: [],
     news: [],
+    singleNews: {},
     brand: {},
     product: {},
     search: '',

@@ -7,11 +7,11 @@
                 <p class="modal-card-title has-text-centered">Marque</p>
             </header>
             <section class="modal-card-body">
-                <b-field label="Name" expanded>
+                <b-field label="Nom de la marque" expanded>
                     <b-input v-model="form.name"></b-input>
                 </b-field>
 
-                <b-field v-if="form.fileBannerName" label="banner">
+                <b-field v-if="form.fileBannerName" label="La bannière">
                     <figure class="image is-3by2">
                         <img :src="form.fileBannerName">
                     </figure>
@@ -93,23 +93,12 @@
         },
         mounted() {
             if (Object.keys(this.brand).length !== 0) {
-                console.log('hehe')
                 this.edit = true
                 this.form = {
                     name: this.brand.name,
                     fileImageName: this.brand.image,
                     fileBannerName: this.brand.banner,
                     description: this.brand.description
-                }
-            } else {
-                console.log('nono')
-                this.form = {
-                    name: '',
-                    fileImage: null,
-                    fileBanner: null,
-                    description: '',
-                    fileImageName: null,
-                    fileBannerName: null
                 }
             }
 
@@ -122,37 +111,23 @@
                     await this.$store.dispatch('admin/createBrand', this.form)
                         .then(res => {
                             setTimeout(() => {
-                                this.afterSubmit(param)
-                            }, 1500)
+                                if (this.added){
+                                    param.close()
+                                }
+                            }, 300)
 
                         })
                 } else
                     await this.$store.dispatch('admin/updateBrand', {form: this.form, id: id})
                         .then(() => {
                             setTimeout(() => {
-                                this.afterSubmit(param)
-                            }, 1500)
+                                if (this.added){
+                                    param.close()
+                                }
+                            }, 300)
                         })
 
             },
-
-            afterSubmit(param) {
-                if (this.added) {
-                    if (this.edit)
-                        this.$store.commit('toastSuccess', {msg: 'Modification avec succès ! '})
-                    else
-                        this.$store.commit('toastSuccess', {msg: 'Ajout avec succès ! '})
-                    this.isLoading = false
-                    param.close()
-                } else {
-                    this.isLoading = false
-                    if (this.edit)
-                        this.$store.commit('toastFail', {msg: 'Le champ name est Requis ! '})
-                    else
-                    this.$store.commit('toastFail', {msg: 'tous les champs sont requis sauf la description !'})
-
-                }
-            }
 
         }
     }

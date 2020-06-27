@@ -13,29 +13,35 @@ const actions = {
                 commit('getRandomProducts', res.data)
             })
     },
-    GetAllProducts({commit}) {
-        axios.get('/api/products')
+    async GetAllProducts({commit}) {
+      await  axios.get('/api/products')
             .then(res => {
                 commit('getProducts', res.data)
             })
     },
 
-    GetAllBrands({commit}) {
-        axios.get('/api/brands')
+    async GetAllBrands({commit}) {
+        await axios.get('/api/brands')
             .then(res => {
                 commit('getBrands', res.data)
             })
     },
 
-    GetAllNews({commit}) {
-        axios.get('/api/news')
+    async GetAllNews({commit}) {
+       await axios.get('/api/news')
             .then(res => {
                 commit('getNews', res.data)
             })
     },
+    async GetNews({commit}) {
+       await axios.get('/api/news/' + id)
+            .then(res => {
+                commit('getSingleNews', res.data)
+            })
+    },
 
-    GetBrand({commit}, id) {
-        axios.get('/api/brands/' + id)
+   async GetBrand({commit}, id) {
+      await axios.get('/api/brands/' + id)
             .then(res => {
                 commit('getBrand', res.data)
             })
@@ -58,9 +64,9 @@ const actions = {
             })
     },
 
-    GetProduct({commit}, id) {
+    async GetProduct({commit}, id) {
 
-        axios.get('/api/products/' + id)
+       await axios.get('/api/products/' + id)
             .then(res => {
                 commit('getProduct', res.data)
             })

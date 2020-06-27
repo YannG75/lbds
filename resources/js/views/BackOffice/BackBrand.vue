@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="has-text-centered is-size-1 has-text-grey-light">Les Produits</h1>
+        <h1 class="has-text-centered is-size-1 has-text-grey-light">Les Marques</h1>
 
         <div class="container mt mb">
             <div class="is-flex addBtn">
@@ -20,7 +20,8 @@
                     <b-button type="is-info"
                               icon-right="edit" @click="[edit(brand),isComponentModalActive = true]"/>
                     <b-button type="is-danger"
-                              icon-right="trash" @click="deleteBrand(brand.id)"/>
+                              icon-right="trash" :class="{'is-loading': trash && clicked === brand.id}"
+                              @click="[supp(brand.id), trash = true, clicked = brand.id]"/>
                 </div>
 
             </div>
@@ -28,7 +29,7 @@
         <b-modal :active.sync="isComponentModalActive"
                  has-modal-card
                  trap-focus
-                 :destroy-on-hide="false"
+                 :destroy-on-hide="true"
                  aria-role="dialog"
                  aria-modal>
             <modal-form :brand="changeBrand" :key="modalKey"></modal-form>
@@ -38,7 +39,7 @@
 
 <script>
     import ModalForm from "../../components/BackOffice/BrandForm";
-    import {mapActions, mapGetters} from "vuex";
+    import {mapActions, mapGetters, mapMutations} from "vuex";
 
     export default {
         name: "BackBrand",
@@ -46,18 +47,18 @@
             return {
                 isComponentModalActive: false,
                 brand: {},
-                modalKey: 1
+                modalKey: 1,
+                trash: false,
+                clicked: null
             }
         },
         computed: {
             ...mapGetters(['getBrands']),
             changeBrand() {
-                if (this.isComponentModalActive === false && this.brand.length !== 0){
+                if (this.isComponentModalActive === false && this.brand.length !== 0) {
                     this.modalKey--
                     return this.brand = {}
-                }
-                else
-                {
+                } else {
                     this.modalKey++
                     return this.brand
                 }
@@ -70,13 +71,25 @@
         methods: {
             ...mapActions({
                 GetAllBrands: 'GetAllBrands',
-                deleteBrand: 'admin/deleteBrand'
+            }),
+
+            ...mapMutations({
+                confirmDelete: 'admin/confirmDelete'
             }),
 
             edit(currentBrand) {
                 this.brand = currentBrand
             },
-        }, components: {
+            supp(id) {
+                this.confirmDelete({ftn: 'admin/deleteBrand', id: id})
+                setTimeout(() => {
+                    this.trash = false
+                }, 4500)
+            }
+
+        },
+
+        components: {
             ModalForm
         },
 

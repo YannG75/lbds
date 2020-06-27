@@ -19,6 +19,10 @@ const mutations = {
         state.news = News
     },
 
+    getSingleNews(state, News) {
+        state.singleNews = News
+    },
+
     getBrand(state, Brand) {
         state.brand = Brand
     },

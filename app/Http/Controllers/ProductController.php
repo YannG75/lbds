@@ -55,7 +55,7 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -98,6 +98,8 @@ class ProductController extends Controller
             $secondaryPictures->sneaker_id = $newProduct->id;
             $secondaryPictures->save();
         }
+
+        return response()->json(['msg' => 'création effectuée avec succès ! 😇']);
     }
 
     /**
@@ -135,11 +137,63 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'color' => 'required',
+            'price'=>'required|numeric',
+            'description'=>'required',
+            'actif'=>'required|integer',
+            'brand'=>'required',
+            'brand_id'=>'required|integer',
+        ]);
+
+        $updateProduct = Product::findOrFail($id)->update([
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'brand_id' => $request->brand_id,
+            'description' => $request->description,
+            'price' => $request->price,
+            'color' => $request->color,
+            'release_date' => Carbon::Now(),
+            'actif' => $request->actif
+        ]);
+
+        if ($request->image) {
+            $oldImage = Product::findOrFail($id);
+            $extension = pathinfo($oldImage->image);
+            $public_id = basename($oldImage->image, "." . $extension['extension']);
+            Cloudder::delete("LBDS/products/".$public_id);
+
+            $imageName = $request->image->getRealPath();
+            Cloudder::upload($imageName, null, ['folder' => 'LBDS/products']);
+            $productImage = Cloudder::getResult();
+
+            $updateProduct = Product::findOrFail($id)->update([
+                'image' => $productImage['secure_url'],
+            ]);
+        }
+
+        if ($request->images){
+
+            $ProductToUpdated = Product::findOrFail($id);
+            foreach ($request->images as $secondPicture){
+                $imageSecond = $secondPicture->getRealPath();
+                Cloudder::upload($imageSecond, null, ['folder' => 'LBDS/images']);
+                $cloudinarySecondPicture = Cloudder::getResult();
+
+                $secondaryPictures = new Image();
+                $secondaryPictures->image = $cloudinarySecondPicture['secure_url'];
+                $secondaryPictures->sneaker_id = $ProductToUpdated->id;
+                $secondaryPictures->save();
+            }
+        }
+
+        return response()->json(['msg' => 'mise à jour effectuée avec succès ! 😇']);
+
     }
 
     /**
@@ -170,6 +224,7 @@ class ProductController extends Controller
 
         $currentProduct->delete();
 
-        return response()->json(['msg' => 'Suppression effectué avec succès ! 😇']);
+        return response()->json(['msg' => 'Suppression effectuée avec succès ! 😇']);
     }
+
 }

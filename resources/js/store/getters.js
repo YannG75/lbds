@@ -1,38 +1,40 @@
- const getters ={
-     getLastNews: state => {
-         return state.lastNews
-     },
+const getters = {
+    getLastNews: state => {
+        return state.lastNews
+    },
 
-     getRandomProducts: state => {
-         return state.randomProducts
-     },
+    getRandomProducts: state => {
+        return state.randomProducts
+    },
 
-     getProducts: state => {
-         return state.products
-     },
+    getProducts: state => {
+        return state.products
+    },
 
-     getBrands: state => {
-         return state.brands
-     },
+    getBrands: state => {
+        return state.brands
+    },
 
-     getNews: state => {
-         return state.news
-     },
+    getNews: state => {
+        return state.news
+    },
+    getSingleNews: state => {
+        return state.singleNews
+    },
 
-     getBrand: state => {
-         return state.brand
-     },
+    getBrand: state => {
+        return state.brand
+    },
 
-     getSearchResult: state => {
-         return state.searchResult
-     },
+    getSearchResult: state => {
+        return state.searchResult
+    },
 
-     getProduct: state => {
-             return state.product
-         },
+    getProduct: state => {
+        return state.product
+    },
 
 
-
- }
- export default getters
+}
+export default getters
 

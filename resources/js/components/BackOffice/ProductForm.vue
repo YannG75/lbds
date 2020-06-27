@@ -12,8 +12,11 @@
                 </b-field>
                 <b-field label="Marque">
                     <b-field grouped group-multiline>
-                        <p class="control" v-for="(brand, index) in getBrands" :key="index" >
-                            <button class="button" style="transition: all .2s ease" :class="{'is-dark' :form.product.id === brand.id}" @click.prevent="form.product = brand">{{brand.name}}</button>
+                        <p class="control" v-for="(brand, index) in getBrands" :key="index">
+                            <button class="button" style="transition: all .2s ease"
+                                    :class="{'is-dark' :form.brand.id === brand.id}"
+                                    @click.prevent="form.brand = brand">{{brand.name}}
+                            </button>
                         </p>
                     </b-field>
                 </b-field>
@@ -47,12 +50,17 @@
                 </b-field>
 
 
-                <b-field v-if="form.fileImagesName" label="Images secondaire">
-                    <figure class="image is-48x48">
-                        <img :src="form.fileImagesName">
-                    </figure>
+                <b-field v-if="form.fileImagesName" label="Images secondaire (suppression instantanée)">
+                    <b-field grouped group-multiline>
+
+                        <figure v-for="(item, index) in form.fileImagesName" :key="index"
+                                class="image is-96x96 control is-relative">
+                            <img :src="item.image">
+                            <i class="fas fa-times-circle sup has-text-danger" @click="delImage(item.id, index)"></i>
+                        </figure>
+                    </b-field>
                 </b-field>
-                <b-field label="Images secondaire">
+                <b-field :label="form.fileImagesName? '' : 'Images secondaire'">
                     <b-upload v-model="form.images"
                               multiple
                               drag-drop>
@@ -94,7 +102,7 @@
             </section>
             <footer class="modal-card-foot">
                 <button class="button" type="button" @click="$parent.close()">Close</button>
-                <button class="button is-primary" @click.prevent="edit? submit($parent, brand.id) : submit($parent)">
+                <button class="button is-primary" @click.prevent="edit? submit($parent, product.id) : submit($parent)">
                     Add
                 </button>
             </footer>
@@ -113,6 +121,7 @@
                 isLoading: this.getIsLoading,
                 isFullPage: false,
                 edit: this.getEdit,
+                load: null,
                 form: {
                     name: '',
                     brand: '',
@@ -133,61 +142,68 @@
 
         computed: {
             ...mapGetters({
-                getBrands:'getBrands',
-                getProduct:'getProduct',
-                getEdit: 'getEdit',
-                getIsLoading: 'getisLoading'
+                getBrands: 'getBrands',
+                getProduct: 'getProduct',
+                getEdit: 'admin/getEdit',
+                getIsLoading: 'admin/getIsLoading',
+                added: 'admin/getAdded'
             }),
+
         },
         props: {
-            productId: Number
+            product: Object
         },
 
         mounted() {
-            this.GetAllBrands()
-            if (this.productId) {
-                this.$store.dispatch('getProduct', this.productId)
-                this.edit = true
-                this.form = {
-                    name: this.product.name,
-                    brand: '',
-                    description: '',
-                    color: '',
-                    price: '',
-                    image: null,
-                    fileImageName: this.product.image,
-                    fileImagesName: null,
-                    images: [],
-                    active: false,
+            this.GetAllBrands().then(() => {
+                if (Object.keys(this.product).length !== 0) {
+                    let currentBrand
+                    this.getBrands.forEach(brand => {
+                        if (this.product.brand === brand.name) {
+                            currentBrand = brand
+                        }
+                    })
+
+                    this.form = {
+                        name: this.product.name,
+                        description: this.product.description,
+                        brand: currentBrand,
+                        color: this.product.color,
+                        price: this.product.price,
+                        image: null,
+                        fileImageName: this.product.image,
+                        fileImagesName: this.product.images,
+                        images: [],
+                        active: Boolean(this.product.actif),
+                    }
+                    this.edit = true
+                }
+            })
 
 
-                    fileImagesName: this.product.images,
-                    description: this.product.description
-                }
-            } else {
-                console.log('nono')
-                this.form = {
-                    name: '',
-                    fileImage: null,
-                    fileBanner: null,
-                    description: '',
-                    fileImageName: null,
-                    fileBannerName: null
-                }
-            }
         },
 
         methods: {
             ...mapActions({
                 GetAllBrands: 'GetAllBrands',
+                GetProduct: 'GetProduct',
+                deleteImage: 'admin/deleteImage'
             }),
 
             ...mapMutations({
-                afterSubmit: 'admin/afterSubmit'
+                afterSubmit: 'admin/afterSubmit',
+
             }),
 
             deleteDropFile(index) {
                 this.form.images.splice(index, 1)
+            },
+
+            delImage(id, index) {
+                this.deleteImage(id)
+                    .then(() => {
+                        this.product.images.splice(index, 1)
+                    })
             },
 
             async submit(param, id) {
@@ -196,16 +212,21 @@
                     await this.$store.dispatch('admin/createProduct', this.form)
                         .then(res => {
                             setTimeout(() => {
-                                this.afterSubmit(param)
-                            }, 1500)
-
+                                if (this.added){
+                                    param.close()
+                                }
+                            }, 300)
+                            this.isLoading = false
                         })
                 } else
-                    await this.$store.dispatch('admin/updateBrand', {form: this.form, id: id})
+                    await this.$store.dispatch('admin/updateProduct', {form: this.form, id: id})
                         .then(() => {
                             setTimeout(() => {
-                                this.afterSubmit(param)
-                            }, 1500)
+                                if (this.added){
+                                    param.close()
+                                }
+                            }, 300)
+                            this.isLoading = false
                         })
 
             },
@@ -215,4 +236,12 @@
 </script>
 
 <style scoped lang="scss">
+
+    .sup {
+        position: absolute;
+        right: -12px;
+        top: -7px;
+        cursor: pointer;
+        margin-left: 5px;
+    }
 </style>

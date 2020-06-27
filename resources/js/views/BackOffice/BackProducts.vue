@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="has-text-centered is-size-1 has-text-grey-light">Les Marques</h1>
+        <h1 class="has-text-centered is-size-1 has-text-grey-light">Les Produits</h1>
 
         <div class="container mt mb">
             <div class="is-flex addBtn">
@@ -20,7 +20,8 @@
                     <b-button type="is-info"
                               icon-right="edit" @click="[edit(product),isComponentModalActive = true]"/>
                     <b-button type="is-danger"
-                              icon-right="trash" @click="deleteProduct(product.id)"/>
+                              icon-right="trash" :class="{'is-loading': trash && clicked === product.id}"
+                              @click="[supp(product.id), trash = true, clicked = product.id]"/>
                 </div>
 
             </div>
@@ -28,7 +29,7 @@
         <b-modal :active.sync="isComponentModalActive"
                  has-modal-card
                  trap-focus
-                 :destroy-on-hide="false"
+                 :destroy-on-hide="true"
                  aria-role="dialog"
                  aria-modal>
             <modal-form :product="changeProduct" :key="modalKey"></modal-form>
@@ -38,26 +39,28 @@
 
 <script>
     import ModalForm from "../../components/BackOffice/ProductForm";
-    import {mapActions, mapGetters} from "vuex";
+    import {mapActions, mapGetters, mapMutations} from "vuex";
 
     export default {
         name: "BackProducts",
         data() {
             return {
                 isComponentModalActive: false,
-                productId: {},
-                modalKey: 1
+                product: {},
+                modalKey: 1,
+                trash: false,
+                clicked: null
             }
         },
         computed: {
-            ...mapGetters(['getProducts']),
+            ...mapGetters(['getProducts','getProduct']),
             changeProduct() {
-                if (this.isComponentModalActive === false && this.productId.length !== 0) {
+                if (this.isComponentModalActive === false && Object.keys(this.product).length !== 0) {
                     this.modalKey--
-                    return this.productId = ''
+                    return this.product = {}
                 } else {
                     this.modalKey++
-                    return this.productId
+                    return this.product
                 }
 
             }
@@ -68,11 +71,26 @@
         methods: {
             ...mapActions({
                 GetAllProducts: 'GetAllProducts',
-                deleteProduct: 'admin/deleteProduct'
+                askForProduct: 'GetProduct'
             }),
 
-            edit(currentProduct) {
-                this.productId = currentProduct.id
+            ...mapMutations({
+                confirmDelete: 'admin/confirmDelete'
+            }),
+
+            async edit(currentProduct) {
+               await this.askForProduct(currentProduct.id)
+                   .then(() => {
+                       this.product = this.getProduct
+                   })
+
+            },
+
+            supp(id) {
+                this.confirmDelete({ftn: 'admin/deleteProduct', id: id})
+                setTimeout(() => {
+                    this.trash = false
+                }, 4500)
             }
         },
         components: {
