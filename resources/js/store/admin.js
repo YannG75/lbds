@@ -89,8 +89,6 @@ export default {
 
         async updateBrand({commit, state, rootState}, {form, id}) {
             state.edit = true
-            console.log(form.fileBanner)
-            console.log(form.fileImage)
             const formData = new FormData();
             formData.append("name", form.name);
             formData.append("description", form.description);

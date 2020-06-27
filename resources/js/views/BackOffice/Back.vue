@@ -21,17 +21,17 @@
                     <img src="/images/undraw_server_push_vtms.svg" alt="BackOffice illustration" width="100%">
                 </div>
                 <div class="column grid ">
-                    <router-link :to="{ name: 'adminBrands' }">
+                    <router-link :to="{ name: 'adminBrands' }" class="grow">
                     <div class="card brand is-flex">
                         <h4 class="is-primary is-size-2">Marques</h4>
                     </div>
                     </router-link>
-                    <router-link :to="{ name: 'adminProducts' }">
+                    <router-link :to="{ name: 'adminProducts' }" class="grow" >
                     <div class="card products is-flex">
                         <h4 class="is-primary is-size-2">Produits</h4>
                     </div>
                     </router-link>
-                    <router-link :to="{ name: 'adminNews' }">
+                    <router-link :to="{ name: 'adminNews' }" class="grow">
                     <div class="card news is-flex">
                         <h4 class="is-primary is-size-2">News</h4>
                     </div>
@@ -68,6 +68,13 @@
             }
         }
 
+        .grow {
+            transition: all ease .3s;
+        }
+        .grow:hover {
+            transform: scale(1.2);
+            box-shadow: 1px 1px 7px black;
+        }
 
 
     .brand {

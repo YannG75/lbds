@@ -2040,12 +2040,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _this.signOutAction();
 
               case 2:
-                _context.next = 4;
+                if (!(_this.$route.path !== '/admin')) {
+                  _context.next = 5;
+                  break;
+                }
+
+                _context.next = 5;
                 return _this.$router.replace({
                   name: 'admin'
                 });
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -25387,7 +25392,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".grid[data-v-55b43278] {\n  grid-auto-rows: minmax(100px, 206px);\n}\n.is-flex[data-v-55b43278] {\n  justify-content: center;\n}\n.is-flex h4[data-v-55b43278] {\n  text-shadow: white 1px 1px 7px;\n}\n.brand[data-v-55b43278] {\n  width: 100%;\n  height: 100%;\n  background: url(\"/images/undraw_logo_design_bjnx.svg\") no-repeat center;\n  background-size: contain;\n}\n.products[data-v-55b43278] {\n  width: 100%;\n  height: 100%;\n  background: url(\"/images/undraw_shopping_app_flsj.svg\") no-repeat center;\n  background-size: contain;\n}\n.news[data-v-55b43278] {\n  width: 100%;\n  height: 100%;\n  background: url(\"/images/undraw_post2_19cj.svg\") no-repeat center;\n  background-size: contain;\n}", ""]);
+exports.push([module.i, ".grid[data-v-55b43278] {\n  grid-auto-rows: minmax(100px, 206px);\n}\n.is-flex[data-v-55b43278] {\n  justify-content: center;\n}\n.is-flex h4[data-v-55b43278] {\n  text-shadow: white 1px 1px 7px;\n}\n.grow[data-v-55b43278] {\n  transition: all ease 0.3s;\n}\n.grow[data-v-55b43278]:hover {\n  transform: scale(1.2);\n  box-shadow: 1px 1px 7px black;\n}\n.brand[data-v-55b43278] {\n  width: 100%;\n  height: 100%;\n  background: url(\"/images/undraw_logo_design_bjnx.svg\") no-repeat center;\n  background-size: contain;\n}\n.products[data-v-55b43278] {\n  width: 100%;\n  height: 100%;\n  background: url(\"/images/undraw_shopping_app_flsj.svg\") no-repeat center;\n  background-size: contain;\n}\n.news[data-v-55b43278] {\n  width: 100%;\n  height: 100%;\n  background: url(\"/images/undraw_post2_19cj.svg\") no-repeat center;\n  background-size: contain;\n}", ""]);
 
 // exports
 
@@ -83095,17 +83100,27 @@ var render = function() {
               "div",
               { staticClass: "column grid " },
               [
-                _c("router-link", { attrs: { to: { name: "adminBrands" } } }, [
-                  _c("div", { staticClass: "card brand is-flex" }, [
-                    _c("h4", { staticClass: "is-primary is-size-2" }, [
-                      _vm._v("Marques")
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "grow",
+                    attrs: { to: { name: "adminBrands" } }
+                  },
+                  [
+                    _c("div", { staticClass: "card brand is-flex" }, [
+                      _c("h4", { staticClass: "is-primary is-size-2" }, [
+                        _vm._v("Marques")
+                      ])
                     ])
-                  ])
-                ]),
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "router-link",
-                  { attrs: { to: { name: "adminProducts" } } },
+                  {
+                    staticClass: "grow",
+                    attrs: { to: { name: "adminProducts" } }
+                  },
                   [
                     _c("div", { staticClass: "card products is-flex" }, [
                       _c("h4", { staticClass: "is-primary is-size-2" }, [
@@ -83115,13 +83130,17 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("router-link", { attrs: { to: { name: "adminNews" } } }, [
-                  _c("div", { staticClass: "card news is-flex" }, [
-                    _c("h4", { staticClass: "is-primary is-size-2" }, [
-                      _vm._v("News")
+                _c(
+                  "router-link",
+                  { staticClass: "grow", attrs: { to: { name: "adminNews" } } },
+                  [
+                    _c("div", { staticClass: "card news is-flex" }, [
+                      _c("h4", { staticClass: "is-primary is-size-2" }, [
+                        _vm._v("News")
+                      ])
                     ])
-                  ])
-                ])
+                  ]
+                )
               ],
               1
             )
@@ -105008,14 +105027,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 commit = _ref5.commit, state = _ref5.state, rootState = _ref5.rootState;
                 form = _ref6.form, id = _ref6.id;
                 state.edit = true;
-                console.log(form.fileBanner);
-                console.log(form.fileImage);
                 formData = new FormData();
                 formData.append("name", form.name);
                 formData.append("description", form.description);
                 if (form.fileBanner !== undefined) formData.append("banner", form.fileBanner);
                 if (form.fileImage !== undefined) formData.append("image", form.fileImage);
-                _context4.next = 12;
+                _context4.next = 10;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/brands/update/' + id, formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -105038,7 +105055,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 });
 
-              case 12:
+              case 10:
               case "end":
                 return _context4.stop();
             }
