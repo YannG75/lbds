@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actu;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use JD\Cloudder\Facades\Cloudder;
@@ -16,13 +17,13 @@ class ActuController extends Controller
      */
     public function index()
     {
-        return response()->json(Actu::all());
+        return response()->json(Actu::where('is_published',true)->where('publish_date','<=',Carbon::now())->get());
     }
 
 
     public function lastNews()
     {
-        return response()->json(Actu::latest()->take(5)->get());
+        return response()->json(Actu::latest()->take(5)->where('is_published',true)->where('publish_date','<=',Carbon::now())->get());
     }
 
     /**
@@ -56,11 +57,11 @@ class ActuController extends Controller
             $all = $request->all();
 
         $imageName = $request->image->getRealPath();
-        Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online-Online/news']);
+        Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online/news']);
         $imgUrl = Cloudder::getResult();
 
         $bannerName = $request->banner->getRealPath();
-        Cloudder::upload($bannerName, null, ['folder' => 'LBDS-Online-Online/news/banner']);
+        Cloudder::upload($bannerName, null, ['folder' => 'LBDS-Online/news/banner']);
         $bannerUrl = Cloudder::getResult();
 
 
@@ -87,7 +88,7 @@ class ActuController extends Controller
      */
     public function show(Actu $actu, $id)
     {
-        return response()->json($actu->findOrFail($id));
+        return response()->json($actu->where('actif',true)->findOrFail($id));
     }
 
     /**
@@ -137,7 +138,7 @@ class ActuController extends Controller
             Cloudder::delete("LBDS-Online-Online/news/".$public_id);
 
             $imageName = $request->image->getRealPath();
-            Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online-Online/news']);
+            Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online/news']);
             $newsImage = Cloudder::getResult();
 
             $updateNews = $oldImage->update([
@@ -151,7 +152,7 @@ class ActuController extends Controller
             Cloudder::delete("LBDS-Online-Online/news/banner/".$public_id);
 
             $imageName = $request->banner->getRealPath();
-            Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online-Online/news/banner']);
+            Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online/news/banner']);
             $newsImage = Cloudder::getResult();
 
             $updateNews = $oldImage->update([
@@ -168,11 +169,11 @@ class ActuController extends Controller
         $news = Actu::findOrFail($id);
         $extension = pathinfo($news->image);
         $public_id = basename($news->image,".".$extension['extension']);
-        Cloudder::delete("LBDS-Online-Online/news/".$public_id);
+        Cloudder::delete("LBDS-Online/news/".$public_id);
 
         $extension = pathinfo($news->banner);
         $public_id = basename($news->banner,".".$extension['extension']);
-        Cloudder::delete("LBDS-Online-Online/news/banner/".$public_id);
+        Cloudder::delete("LBDS-Online/news/banner/".$public_id);
 
         $news->delete();
         return response()->json(['msg' => 'Suppression réussis !']);

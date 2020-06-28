@@ -23,7 +23,7 @@ class ProductController extends Controller
         $max = $request->query('max');
 
         if ($sort && $max && ($max == 10)){
-            $data = $product->all()->random($max);
+            $data = $product->where('actif',true)->get()->random($max);
             return response()->json($data);
         }
 
@@ -32,11 +32,11 @@ class ProductController extends Controller
         }
 
         if ($search){
-             $data = $product->where('name','like' ,'%'.$search.'%')->paginate(3);
+             $data = $product->where('name','like' ,'%'.$search.'%')->where('actif',true)->paginate(3);
             return response()->json($data);
         }
 
-         $data = $product->all();
+         $data = $product->where('actif',true)->get();
 
         return response()->json($data);
     }
@@ -112,7 +112,7 @@ class ProductController extends Controller
     public function show(Product $product, $id)
     {
         try{
-            $data = $product->with('images')->findOrFail($id);
+            $data = $product->where('actif',true)->with('images')->findOrFail($id);
             return response()->json($data, 200);
         }
         catch (\Exception $e){

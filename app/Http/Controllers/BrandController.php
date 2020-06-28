@@ -47,9 +47,9 @@ class BrandController extends Controller
 
         $requestedBrand = $request->all();
 
-        Cloudder::upload($requestedBrand['banner']->getRealPath(), null, ['folder' => 'LBDS/brands/banner']);
+        Cloudder::upload($requestedBrand['banner']->getRealPath(), null, ['folder' => 'LBDS-Online/brands/banner']);
         $banner = Cloudder::getResult();
-        Cloudder::upload($requestedBrand['image']->getRealPath(), null, ['folder' => 'LBDS/brands']);
+        Cloudder::upload($requestedBrand['image']->getRealPath(), null, ['folder' => 'LBDS-Online/brands']);
         $image = Cloudder::getResult();
 
         $brand = new Brand();
@@ -109,10 +109,10 @@ class BrandController extends Controller
         if(isset($requestedBrand['image'])){
             $extension = pathinfo($currentBrand->image);
             $public_id = basename($currentBrand->image, "." . $extension['extension']);
-            Cloudder::delete("LBDS/brands/" . $public_id);
+            Cloudder::delete("LBDS-Online/brands/" . $public_id);
 
             $imageName = $requestedBrand['image']->getRealPath();
-            Cloudder::upload($imageName, null, ['folder' => 'LBDS/brands']);
+            Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online/brands']);
             $newImage = Cloudder::getResult();
 
             $updateBrand = $brand->findOrFail($id)->update([
@@ -122,10 +122,10 @@ class BrandController extends Controller
         if(isset($requestedBrand['banner'])){
             $extension = pathinfo($currentBrand->banner);
             $public_id = basename($currentBrand->banner, "." . $extension['extension']);
-            Cloudder::delete("LBDS/brands/banner/".$public_id);
+            Cloudder::delete("LBDS-Online/brands/banner/".$public_id);
 
             $bannerName = $requestedBrand['banner']->getRealPath();
-            Cloudder::upload($bannerName, null, ['folder' => 'LBDS/brands/banner']);
+            Cloudder::upload($bannerName, null, ['folder' => 'LBDS-Online/brands/banner']);
             $newBanner = Cloudder::getResult();
 
             $updateBrand =$brand->findOrFail($id)->update([
@@ -156,10 +156,10 @@ class BrandController extends Controller
         $extension_banner = pathinfo($currentBrand->banner);
 
         $public_id = basename($currentBrand->image, "." . $extension['extension']);
-        Cloudder::delete("LBDS/brands/" . $public_id);
+        Cloudder::delete("LBDS-Online/brands/" . $public_id);
 
         $public_id_banner = basename($currentBrand->banner, "." . $extension_banner['extension']);
-        Cloudder::delete("LBDS/brands/banner/" . $public_id_banner);
+        Cloudder::delete("LBDS-Online/brands/banner/" . $public_id_banner);
 
         $currentBrand->delete();
 
