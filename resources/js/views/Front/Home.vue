@@ -122,6 +122,7 @@
             .check-it {
                 display: flex;
                 justify-content: center;
+                align-items: flex-end;
 
                 article {
                     border-radius: 1px;

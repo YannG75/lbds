@@ -319,7 +319,7 @@
         }
 
         .hero-body {
-            height: 40vh !important;
+            height: 45vh !important;
 
             .title {
                 font-size: 1rem;
@@ -331,14 +331,13 @@
 
         }
 
-
     }
 
-    /*@media all and (max-width: 400px) {*/
-    /*    .hero-body {*/
-    /*        height: 35vh !important;*/
-    /*    }*/
+    @media all and (max-width: 400px) {
+        .level-item .open {
+            width: 100px;
+        }
 
-    /*}*/
+    }
 
 </style>
