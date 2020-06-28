@@ -67,8 +67,8 @@
 
 <script>
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
-    import caroussel from "../../components/caroussel"
-    import navigation from "../../components/Navigation";
+    import caroussel from "../../components/Front/caroussel"
+    import navigation from "../../components/Front/Navigation";
 
 
     export default {

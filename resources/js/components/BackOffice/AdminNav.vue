@@ -88,8 +88,10 @@
 
             async signOut () {
                 await this.signOutAction()
-                if(this.$route.path !== '/admin')
-                await this.$router.replace({name: 'admin'})
+                if(this.$route.path !== '/admin'){
+                    await this.$router.replace({name: 'admin'})
+                }
+
 
             }
         }

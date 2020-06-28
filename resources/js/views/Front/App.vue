@@ -31,6 +31,10 @@
         }
     }
 
+    .container {
+        padding: 20px;
+    }
+
     .footer {
         bottom: 0;
         width: 100%;
@@ -293,7 +297,12 @@
         }
 
     }
-
+    div .navbar-brand {
+        align-items : center!important;
+    }
+    .mobile {
+        margin-bottom: unset!important;
+    }
 
     @media all and (max-width: 768px) {
 

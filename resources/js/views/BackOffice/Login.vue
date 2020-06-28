@@ -20,7 +20,7 @@
 </template>
 
 <script>
-    import AdminNav from "../../components/AdminNav";
+    import AdminNav from "../../components/BackOffice/AdminNav";
     import axios from 'axios'
     import {mapActions} from 'vuex'
 

@@ -73,7 +73,7 @@ class ProductController extends Controller
 
 
         $imageName = $request->image->getRealPath();
-        Cloudder::upload($imageName, null, ['folder' => 'LBDS/products']);
+        Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online/products']);
         $productImage = Cloudder::getResult();
 
         $newProduct = new Product();
@@ -90,7 +90,7 @@ class ProductController extends Controller
 
         foreach ($request->images as $secondPicture){
             $imageSecond = $secondPicture->getRealPath();
-            Cloudder::upload($imageSecond, null, ['folder' => 'LBDS/images']);
+            Cloudder::upload($imageSecond, null, ['folder' => 'LBDS-Online/images']);
             $cloudinarySecondPicture = Cloudder::getResult();
 
             $secondaryPictures = new Image();
@@ -99,7 +99,7 @@ class ProductController extends Controller
             $secondaryPictures->save();
         }
 
-        return response()->json(['msg' => 'création effectuée avec succès ! 😇']);
+        return response()->json(['msg' => 'Création effectuée avec succès ! 😇']);
     }
 
     /**
@@ -166,10 +166,10 @@ class ProductController extends Controller
             $oldImage = Product::findOrFail($id);
             $extension = pathinfo($oldImage->image);
             $public_id = basename($oldImage->image, "." . $extension['extension']);
-            Cloudder::delete("LBDS/products/".$public_id);
+            Cloudder::delete("LBDS-Online/products/".$public_id);
 
             $imageName = $request->image->getRealPath();
-            Cloudder::upload($imageName, null, ['folder' => 'LBDS/products']);
+            Cloudder::upload($imageName, null, ['folder' => 'LBDS-Online/products']);
             $productImage = Cloudder::getResult();
 
             $updateProduct = Product::findOrFail($id)->update([
@@ -182,7 +182,7 @@ class ProductController extends Controller
             $ProductToUpdated = Product::findOrFail($id);
             foreach ($request->images as $secondPicture){
                 $imageSecond = $secondPicture->getRealPath();
-                Cloudder::upload($imageSecond, null, ['folder' => 'LBDS/images']);
+                Cloudder::upload($imageSecond, null, ['folder' => 'LBDS-Online/images']);
                 $cloudinarySecondPicture = Cloudder::getResult();
 
                 $secondaryPictures = new Image();
@@ -192,7 +192,7 @@ class ProductController extends Controller
             }
         }
 
-        return response()->json(['msg' => 'mise à jour effectuée avec succès ! 😇']);
+        return response()->json(['msg' => 'Modification effectuée avec succès ! 😇']);
 
     }
 
@@ -213,14 +213,14 @@ class ProductController extends Controller
         foreach ($currentProduct['images'] as $image) {
             $extension = pathinfo($image['image']);
             $public_id = basename($image['image'], "." . $extension['extension']);
-            Cloudder::delete("LBDS/images/" . $public_id);
+            Cloudder::delete("LBDS-Online/images/" . $public_id);
             Image::where("sneaker_id","=",$image['product_id'])->delete();
         }
 
         $extension = pathinfo($currentProduct['image']);
 
         $public_id = basename($currentProduct['image'], "." . $extension['extension']);
-        Cloudder::delete("LBDS/products/" . $public_id);
+        Cloudder::delete("LBDS-Online/products/" . $public_id);
 
         $currentProduct->delete();
 

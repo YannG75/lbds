@@ -21,6 +21,7 @@
                     <h3 class="is-size-2 has-text-primary mt mb">{{ sneaker.price }} €</h3>
 
                     <p class="mb">{{sneaker.description}}</p>
+                    <p>Couleur : {{sneaker.color}}</p>
                     <span class="mt">Choisissez une taille :</span>
                     <form action="">
                         <section class="gridSize ">
@@ -61,7 +62,7 @@
 
 <script>
     import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
-    import navigation from "../../components/Navigation";
+    import navigation from "../../components/Front/Navigation";
     import sizes from '../../../../database/data/sizes'
     import axios from "axios";
 
@@ -80,6 +81,7 @@
         },
         computed: {},
         beforeMount() {
+            window.scrollTo(0,0)
             axios.get('/api/products/' + this.$route.params.id)
                 .then(res => {
                     this.sneaker = res.data

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import AdminNav from "../../components/AdminNav";
+    import AdminNav from "../../components/BackOffice/AdminNav";
 
 
     export default {

@@ -60,7 +60,7 @@ class BrandController extends Controller
             $brand->description = $requestedBrand['description'];
         $brand->save();
 
-        return response()->json(['msg' => 'Suppression effectué avec succès ! 😇']);
+        return response()->json(['msg' => 'Création effectué avec succès ! 😇']);
     }
 
     /**
@@ -133,7 +133,7 @@ class BrandController extends Controller
             ]);
         }
 
-        return response()->json(['msg' => 'modification effectué avec succès ! 😇']);
+        return response()->json(['msg' => 'Modification effectué avec succès ! 😇']);
     }
 
     /**

@@ -21,9 +21,9 @@
 </template>
 
 <script>
-    import navigation from "../../components/Navigation";
+    import navigation from "../../components/Front/Navigation";
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
-    import products from '../../components/AllProducts'
+    import products from '../../components/Front/AllProducts'
     import axios from "axios";
     export default {
         name: "Brands",

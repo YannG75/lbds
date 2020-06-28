@@ -71,7 +71,7 @@
 </template>
 
 <script>
-    import navigation from "../../components/Navigation";
+    import navigation from "../../components/Front/Navigation";
     import axios from 'axios'
 
     export default {

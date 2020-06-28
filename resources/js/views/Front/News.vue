@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import navigation from "../../components/Navigation";
+    import navigation from "../../components/Front/Navigation";
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
 
     export default {

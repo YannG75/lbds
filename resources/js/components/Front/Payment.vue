@@ -269,6 +269,6 @@
 </script>
 
 <style scoped lang="scss">
-@import '../../sass/payment.scss';
+@import '../../../sass/payment';
 
 </style>

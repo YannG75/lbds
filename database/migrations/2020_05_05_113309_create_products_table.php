@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->date('release_date')->nullable();
             $table->integer('brand_id');
-            $table->boolean('actif')->default('true');
+            $table->boolean('actif')->default(true);
         });
     }
 

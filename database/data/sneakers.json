@@ -256,7 +256,7 @@
     "description": "La tige écologique de ces chaussures de randonnée pour homme est fabriquée en cuir provenant de sources responsables et de tissu ReBOTL™ recyclé. Elles sont dotées d'une assise plantaire matelassée OrthoLite® offrant un excellent soutien, d'une semelle intermédiaire en EVA et d'une semelle crantée en caoutchouc.",
     "price": 140,
     "release_date": "2019-08-01",
-    "image": "Timberland-sprint-trekker-krekel.jpg",
+    "image": "Timberland-sprint-trekker.jpg",
     "brand_id": 6
   },
   {
@@ -280,13 +280,13 @@
     "brand_id": 6
   },
   {
-    "name": "timbderland oxford adventure 2.0 cupsole",
+    "name": "timberland oxford adventure 2.0 cupsole",
     "brand": "Timberland",
     "color": "Bleu Marine",
     "description": "Conçue pour apporter style et confort, cette Oxford moderne pour homme combine confort et durabilité. Elle est fabriquée à partir de matériaux recyclés et provenant d'une source responsable : cuir issu d'une tancolore neroe écologique, doublure et lacets en tissu recyclé.",
     "price": 100,
     "release_date": "2018-06-18",
-    "image": "timbderland-oxford-adventure-2-cupsole.jpg",
+    "image": "timberland-oxford-adventure-2-cupsole.jpg",
     "brand_id": 6
   },
   {

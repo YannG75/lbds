@@ -52,7 +52,7 @@
 </template>
 
 <script>
-    import navigation from "../../components/Navigation";
+    import navigation from "../../components/Front/Navigation";
     export default {
         name: "basket",
         data() {

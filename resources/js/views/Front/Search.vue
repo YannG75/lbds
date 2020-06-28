@@ -38,8 +38,8 @@
 
 <script>
     import {mapActions, mapMutations, mapState, mapGetters} from 'vuex'
-    import navigation from "../../components/Navigation";
-    import AllProducts from "../../components/AllProducts";
+    import navigation from "../../components/Front/Navigation";
+    import AllProducts from "../../components/Front/AllProducts";
 
 
     export default {

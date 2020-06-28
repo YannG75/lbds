@@ -61,11 +61,11 @@
 </template>
 
 <script>
-    import navigation from "../../components/Navigation";
-    import Personal from "../../components/Personal";
-    import Payment from "../../components/Payment";
-    import Recap from "../../components/Recap";
-    import Confirm from "../../components/Confirm";
+    import navigation from "../../components/Front/Navigation";
+    import Personal from "../../components/Front/Personal";
+    import Payment from "../../components/Front/Payment";
+    import Recap from "../../components/Front/Recap";
+    import Confirm from "../../components/Front/Confirm";
     import {required, email} from "vuelidate/lib/validators";
 
     export default {
