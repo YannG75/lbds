@@ -3688,7 +3688,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       clicked: null
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['admin/getNews']), {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getNews']), {
     changeNews: function changeNews() {
       if (this.isComponentModalActive === false && this.news.length !== 0) {
         this.modalKey--;

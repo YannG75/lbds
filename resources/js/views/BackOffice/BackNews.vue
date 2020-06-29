@@ -52,7 +52,7 @@
             }
         },
         computed: {
-            ...mapGetters(['admin/getNews']),
+            ...mapGetters(['getNews']),
             changeNews() {
                 if (this.isComponentModalActive === false && this.news.length !== 0){
                     this.modalKey--
