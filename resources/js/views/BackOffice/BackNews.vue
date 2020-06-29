@@ -52,7 +52,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getNews']),
+            ...mapGetters(['admin/getNews']),
             changeNews() {
                 if (this.isComponentModalActive === false && this.news.length !== 0){
                     this.modalKey--
@@ -71,7 +71,7 @@
         },
         methods: {
             ...mapActions({
-                GetAllNews: 'GetAllNews',
+                GetAllNews: 'admin/GetAllNews',
 
             }),
 

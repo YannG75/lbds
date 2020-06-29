@@ -70,8 +70,8 @@
         },
         methods: {
             ...mapActions({
-                GetAllProducts: 'GetAllProducts',
-                askForProduct: 'GetProduct'
+                GetAllProducts: 'admin/GetAllProducts',
+                askForProduct: 'admin/GetProduct'
             }),
 
             ...mapMutations({

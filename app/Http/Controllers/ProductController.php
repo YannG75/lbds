@@ -41,6 +41,23 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
+
+    public function adminIndex() {
+        return response()->json(Product::all());
+    }
+
+    public function adminShow(Product $product, $id)
+    {
+        try{
+            $data = $product->with('images')->findOrFail($id);
+            return response()->json($data, 200);
+        }
+        catch (\Exception $e){
+            $error = "Ce produit n'existe pas";
+            return response()->json(['msg'=>$error], 404);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,17 +76,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|unique:products',
-            'color' => 'required',
-            'image'=>'required|mimes:jpeg,jpg,png',
-            'price'=>'required|numeric',
-            'description'=>'required',
-            'actif'=>'required|integer',
-            'brand'=>'required',
-            'brand_id'=>'required|integer',
-            'images'=>'required',
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required|unique:products',
+                'color' => 'required',
+                'image'=>'required|mimes:jpeg,jpg,png',
+                'price'=>'required|numeric',
+                'description'=>'required',
+                'actif'=>'required|integer',
+                'brand'=>'required',
+                'brand_id'=>'required|integer',
+                'images'=>'required',
+            ]);
+        }
+        catch (\Exception $e){
+            $error = "Tous les champs doivent être remplis !";
+            return response()->json(['msg'=> $error], 404);
+        }
+
 
 
         $imageName = $request->image->getRealPath();
@@ -141,6 +165,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product, $id)
     {
+
+    try {
         $request->validate([
             'name' => 'required',
             'color' => 'required',
@@ -150,6 +176,11 @@ class ProductController extends Controller
             'brand'=>'required',
             'brand_id'=>'required|integer',
         ]);
+    }
+    catch (\Exception $e){
+        $error = "Tous les champs doivent être remplis !";
+        return response()->json(['msg'=> $error], 404);
+    }
 
         $updateProduct = Product::findOrFail($id)->update([
             'name' => $request->name,

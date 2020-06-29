@@ -115,7 +115,7 @@
                                     param.close()
                                 }
                             }, 300)
-
+                            this.isLoading = false
                         })
                 } else
                     await this.$store.dispatch('admin/updateBrand', {form: this.form, id: id})
@@ -125,6 +125,7 @@
                                     param.close()
                                 }
                             }, 300)
+                            this.isLoading = false
                         })
 
             },

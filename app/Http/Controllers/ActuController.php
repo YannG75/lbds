@@ -20,6 +20,15 @@ class ActuController extends Controller
         return response()->json(Actu::where('is_published',true)->where('publish_date','<=',Carbon::now())->get());
     }
 
+    public function adminIndex() {
+        return response()->json(Actu::all());
+    }
+
+    public function adminShow(Actu $actu, $id)
+    {
+        return response()->json($actu->findOrFail($id));
+    }
+
 
     public function lastNews()
     {
@@ -44,16 +53,22 @@ class ActuController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|unique:actus',
-            'image'=>'required|mimes:jpeg,jpg,png',
-            'banner'=>'required|mimes:jpeg,jpg,png',
-            'summary'=>'required',
-            'content'=>'required',
-            'publish_date'=>'required',
-            'is_published'=>'required|integer',
-            'author'=>'required',
-        ]);
+        try {
+            $request->validate([
+                'title' => 'required|unique:actus',
+                'image'=>'required|mimes:jpeg,jpg,png',
+                'banner'=>'required|mimes:jpeg,jpg,png',
+                'summary'=>'required',
+                'content'=>'required',
+                'publish_date'=>'required',
+                'is_published'=>'required|integer',
+                'author'=>'required',
+            ]);
+        }
+    catch (\Exception $e){
+        $error = "Tous les champs doivent être remplis !";
+        return response()->json(['msg'=> $error], 404);
+    }
             $all = $request->all();
 
         $imageName = $request->image->getRealPath();
@@ -110,15 +125,20 @@ class ActuController extends Controller
      */
     public function update(Request $request, Actu $actu, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'summary'=>'required',
-            'content'=>'required',
-            'publish_date'=>'required',
-            'is_published'=>'required|integer',
-            'author'=>'required',
-        ]);
-
+        try {
+            $request->validate([
+                'title' => 'required',
+                'summary'=>'required',
+                'content'=>'required',
+                'publish_date'=>'required',
+                'is_published'=>'required|integer',
+                'author'=>'required',
+            ]);
+        }
+    catch (\Exception $e){
+        $error = "Tous les champs doivent être remplis !";
+        return response()->json(['msg'=> $error], 404);
+    }
         $all = $request->all();
 
          Actu::findOrFail($id)->update([

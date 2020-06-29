@@ -21,6 +21,12 @@ class BrandController extends Controller
         return $brand->all()->load('products');
     }
 
+
+    public function adminIndex()
+    {
+        return response()->json(Brand::all());
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,11 +45,16 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'banner' => 'required',
-            'image' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required',
+                'banner' => 'required',
+                'image' => 'required',
+            ]);
+        } catch (\Exception $e) {
+            $error = "Tous les champs doivent être remplis sauf la description !";
+            return response()->json(['msg' => $error], 404);
+        }
 
         $requestedBrand = $request->all();
 
@@ -95,18 +106,25 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand, $id)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
+       try {
+           $request->validate([
+               'name' => 'required',
+           ]);
 
-        $updateBrand =$brand->findOrFail($id)->update([
+       }
+    catch (\Exception $e) {
+        $error = "Le champs name ne peut être vide !";
+        return response()->json(['msg' => $error], 404);
+    }
+
+        $updateBrand = $brand->findOrFail($id)->update([
             'name' => $request->name,
             'description' => $request->description,
         ]);
 
         $requestedBrand = $request->all();
         $currentBrand = $brand->findOrFail($id);
-        if(isset($requestedBrand['image'])){
+        if (isset($requestedBrand['image'])) {
             $extension = pathinfo($currentBrand->image);
             $public_id = basename($currentBrand->image, "." . $extension['extension']);
             Cloudder::delete("LBDS-Online/brands/" . $public_id);
@@ -119,16 +137,16 @@ class BrandController extends Controller
                 'image' => $newImage['secure_url'],
             ]);
         }
-        if(isset($requestedBrand['banner'])){
+        if (isset($requestedBrand['banner'])) {
             $extension = pathinfo($currentBrand->banner);
             $public_id = basename($currentBrand->banner, "." . $extension['extension']);
-            Cloudder::delete("LBDS-Online/brands/banner/".$public_id);
+            Cloudder::delete("LBDS-Online/brands/banner/" . $public_id);
 
             $bannerName = $requestedBrand['banner']->getRealPath();
             Cloudder::upload($bannerName, null, ['folder' => 'LBDS-Online/brands/banner']);
             $newBanner = Cloudder::getResult();
 
-            $updateBrand =$brand->findOrFail($id)->update([
+            $updateBrand = $brand->findOrFail($id)->update([
                 'banner' => $newBanner['secure_url'],
             ]);
         }

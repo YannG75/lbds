@@ -32,10 +32,12 @@ export default {
             state.added = value
         },
 
+
+
         async confirmDelete(state, {ftn , id}) {
            await Dialog.confirm({
                 title: 'Suppression',
-                message: 'Êtes-vous sur de vouloir <b>supprimer</b> ceci ?',
+                msg: 'Êtes-vous sur de vouloir <b>supprimer</b> ceci ?',
                 confirmText: 'Oui !',
                 type: 'is-danger',
                 hasIcon: true,
@@ -46,6 +48,44 @@ export default {
     },
 
     actions: {
+
+        async GetAllProducts({commit}) {
+            await  axios.get('/api/products/admin')
+                .then(res => {
+                    commit('getProducts', res.data, {root: true})
+                })
+        },
+
+        async GetAllBrands({commit}) {
+            await axios.get('/api/brands/admin')
+                .then(res => {
+                    commit('getBrands', res.data, {root: true})
+                })
+        },
+
+        async GetAllNews({commit}) {
+            await axios.get('/api/news/admin')
+                .then(res => {
+                    commit('getNews', res.data, {root: true})
+                })
+        },
+
+        async GetNews({commit}) {
+            await axios.get('/api/news/admin/' + id)
+                .then(res => {
+                    commit('getSingleNews', res.data, {root: true})
+                })
+        },
+        async GetProduct({commit}, id) {
+
+            await axios.get('/api/products/admin/' + id)
+                .then(res => {
+                    commit('getProduct', res.data, {root: true})
+                })
+        },
+
+
+
         async createBrand({commit, state, rootState}, form) {
             state.edit = false
             const formData = new FormData();
@@ -69,7 +109,7 @@ export default {
 
                 .catch(e => {
                     this.commit('admin/setAdded', false)
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
 
@@ -80,10 +120,10 @@ export default {
         deleteBrand({commit}, id) {
             axios.delete('/api/brands/' + id).then(res => {
                 this.commit('toastSuccess', {msg: res.data.msg})
-                this.dispatch('GetAllBrands', null, {root: true})
+                this.dispatch('admin/GetAllBrands')
             })
                 .catch(e => {
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
 
@@ -107,13 +147,13 @@ export default {
                 .then(res => {
                     this.commit('admin/setAdded', true)
                     this.commit('toastSuccess', {msg: res.data.msg})
-                    this.dispatch('GetAllBrands', null, {root: true})
+                    this.dispatch('admin/GetAllBrands')
 
                 })
 
                 .catch(e => {
                     this.commit('admin/setAdded', false)
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
 
@@ -144,13 +184,13 @@ export default {
                 .then(res => {
                     this.commit('admin/setAdded', true)
                     this.commit('toastSuccess', {msg: res.data.msg})
-                    this.dispatch('GetAllProducts', null, {root: true})
+                    this.dispatch('admin/GetAllProducts')
 
                 })
 
                 .catch(e => {
                     this.commit('admin/setAdded', false)
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
 
@@ -182,30 +222,30 @@ export default {
                 .then(res => {
                     this.commit('admin/setAdded', true)
                     this.commit('toastSuccess', {msg: res.data.msg})
-                    this.dispatch('GetAllProducts', null, {root: true})
+                    this.dispatch('admin/GetAllProducts')
 
                 })
 
                 .catch(e => {
                     this.commit('admin/setAdded', false)
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
 
         async deleteProduct({commit}, id) {
             await axios.delete('/api/products/' + id).then(res => {
                 this.commit('toastSuccess', {msg: res.data.msg})
-                this.dispatch('GetAllProducts', null, {root: true})
+                this.dispatch('admin/GetAllProducts')
             })
                 .catch(e => {
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
         async deleteImage({commit}, id) {
             await axios.delete('/api/products/image/' + id).then(res => {
                 this.commit('toastSuccess', {msg: res.data.msg})
             }).catch(e => {
-                this.commit('toastFail', {msg: e.response.data.message})
+                this.commit('toastFail', {msg: e.response.data.msg})
             })
         },
 
@@ -232,13 +272,13 @@ export default {
                 .then(res => {
                     this.commit('admin/setAdded', true)
                     this.commit('toastSuccess', {msg: res.data.msg})
-                    this.dispatch('GetAllNews', null, {root: true})
+                    this.dispatch('admin/GetAllNews')
 
                 })
 
                 .catch(e => {
                     this.commit('admin/setAdded', false)
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
 
@@ -267,13 +307,13 @@ export default {
                 .then(res => {
                     this.commit('admin/setAdded', true)
                     this.commit('toastSuccess', {msg: res.data.msg})
-                    this.dispatch('GetAllNews', null, {root: true})
+                    this.dispatch('admin/GetAllNews')
 
                 })
 
                 .catch(e => {
                     this.commit('admin/setAdded', false)
-                    this.commit('toastFail', {msg: e.response.data.message})
+                    this.commit('toastFail', {msg: e.response.data.msg})
                 })
         },
 
@@ -281,9 +321,9 @@ export default {
         async deleteNews({commit}, id) {
             await axios.delete('/api/news/' + id).then(res => {
                 this.commit('toastSuccess', {msg: res.data.msg})
-                this.dispatch('GetAllNews', null, {root: true})
+                this.dispatch('admin/GetAllNews')
             }).catch(e => {
-                this.commit('toastFail', {msg: e.response.data.message})
+                this.commit('toastFail', {msg: e.response.data.msg})
             })
         },
 

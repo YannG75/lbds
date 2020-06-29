@@ -2434,6 +2434,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       param.close();
                     }
                   }, 300);
+                  _this.isLoading = false;
                 });
 
               case 4:
@@ -2451,6 +2452,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       param.close();
                     }
                   }, 300);
+                  _this.isLoading = false;
                 });
 
               case 8:
@@ -3592,7 +3594,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.GetAllBrands();
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])({
-    GetAllBrands: 'GetAllBrands'
+    GetAllBrands: 'admin/GetAllBrands'
   }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])({
     confirmDelete: 'admin/confirmDelete'
   }), {
@@ -3686,7 +3688,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       clicked: null
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getNews']), {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['admin/getNews']), {
     changeNews: function changeNews() {
       if (this.isComponentModalActive === false && this.news.length !== 0) {
         this.modalKey--;
@@ -3701,7 +3703,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.GetAllNews();
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
-    GetAllNews: 'GetAllNews'
+    GetAllNews: 'admin/GetAllNews'
   }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])({
     confirmDelete: 'admin/confirmDelete'
   }), {
@@ -3819,8 +3821,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.GetAllProducts();
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])({
-    GetAllProducts: 'GetAllProducts',
-    askForProduct: 'GetProduct'
+    GetAllProducts: 'admin/GetAllProducts',
+    askForProduct: 'admin/GetProduct'
   }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapMutations"])({
     confirmDelete: 'admin/confirmDelete'
   }), {
@@ -105015,7 +105017,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 3;
                 return buefy__WEBPACK_IMPORTED_MODULE_2__["DialogProgrammatic"].confirm({
                   title: 'Suppression',
-                  message: 'Êtes-vous sur de vouloir <b>supprimer</b> ceci ?',
+                  msg: 'Êtes-vous sur de vouloir <b>supprimer</b> ceci ?',
                   confirmText: 'Oui !',
                   type: 'is-danger',
                   hasIcon: true,
@@ -105034,23 +105036,138 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   actions: {
-    createBrand: function createBrand(_ref2, form) {
-      var _this2 = this;
-
+    GetAllProducts: function GetAllProducts(_ref2) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var commit, state, rootState, formData;
+        var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                commit = _ref2.commit, state = _ref2.state, rootState = _ref2.rootState;
+                commit = _ref2.commit;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/products/admin').then(function (res) {
+                  commit('getProducts', res.data, {
+                    root: true
+                  });
+                });
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    GetAllBrands: function GetAllBrands(_ref3) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref3.commit;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/brands/admin').then(function (res) {
+                  commit('getBrands', res.data, {
+                    root: true
+                  });
+                });
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    GetAllNews: function GetAllNews(_ref4) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                commit = _ref4.commit;
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/news/admin').then(function (res) {
+                  commit('getNews', res.data, {
+                    root: true
+                  });
+                });
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    GetNews: function GetNews(_ref5) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref5.commit;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/news/admin/' + id).then(function (res) {
+                  commit('getSingleNews', res.data, {
+                    root: true
+                  });
+                });
+
+              case 3:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    GetProduct: function GetProduct(_ref6, id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit;
+                _context6.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/products/admin/' + id).then(function (res) {
+                  commit('getProduct', res.data, {
+                    root: true
+                  });
+                });
+
+              case 3:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
+    },
+    createBrand: function createBrand(_ref7, form) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var commit, state, rootState, formData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                commit = _ref7.commit, state = _ref7.state, rootState = _ref7.rootState;
                 state.edit = false;
                 formData = new FormData();
                 formData.append("name", form.name);
                 formData.append("banner", form.fileBanner);
                 formData.append("image", form.fileImage);
                 formData.append("description", form.description);
-                _context2.next = 9;
+                _context7.next = 9;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/brands', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -105069,74 +105186,72 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.commit('admin/setAdded', false);
 
                   _this2.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 9:
               case "end":
-                return _context2.stop();
+                return _context7.stop();
             }
           }
-        }, _callee2);
+        }, _callee7);
       }))();
     },
-    sleep: function sleep(_ref3, ms) {
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+    sleep: function sleep(_ref8, ms) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
         var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                commit = _ref3.commit;
-                return _context3.abrupt("return", new Promise(function (resolve) {
+                commit = _ref8.commit;
+                return _context8.abrupt("return", new Promise(function (resolve) {
                   return setTimeout(resolve, ms);
                 }));
 
               case 2:
               case "end":
-                return _context3.stop();
+                return _context8.stop();
             }
           }
-        }, _callee3);
+        }, _callee8);
       }))();
     },
-    deleteBrand: function deleteBrand(_ref4, id) {
+    deleteBrand: function deleteBrand(_ref9, id) {
       var _this3 = this;
 
-      var commit = _ref4.commit;
+      var commit = _ref9.commit;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/api/brands/' + id).then(function (res) {
         _this3.commit('toastSuccess', {
           msg: res.data.msg
         });
 
-        _this3.dispatch('GetAllBrands', null, {
-          root: true
-        });
+        _this3.dispatch('admin/GetAllBrands');
       })["catch"](function (e) {
         _this3.commit('toastFail', {
-          msg: e.response.data.message
+          msg: e.response.data.msg
         });
       });
     },
-    updateBrand: function updateBrand(_ref5, _ref6) {
+    updateBrand: function updateBrand(_ref10, _ref11) {
       var _this4 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
         var commit, state, rootState, form, id, formData;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context9.prev = _context9.next) {
               case 0:
-                commit = _ref5.commit, state = _ref5.state, rootState = _ref5.rootState;
-                form = _ref6.form, id = _ref6.id;
+                commit = _ref10.commit, state = _ref10.state, rootState = _ref10.rootState;
+                form = _ref11.form, id = _ref11.id;
                 state.edit = true;
                 formData = new FormData();
                 formData.append("name", form.name);
                 formData.append("description", form.description);
                 if (form.fileBanner !== undefined) formData.append("banner", form.fileBanner);
                 if (form.fileImage !== undefined) formData.append("image", form.fileImage);
-                _context4.next = 10;
+                _context9.next = 10;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/brands/update/' + id, formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -105148,35 +105263,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     msg: res.data.msg
                   });
 
-                  _this4.dispatch('GetAllBrands', null, {
-                    root: true
-                  });
+                  _this4.dispatch('admin/GetAllBrands');
                 })["catch"](function (e) {
                   _this4.commit('admin/setAdded', false);
 
                   _this4.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 10:
               case "end":
-                return _context4.stop();
+                return _context9.stop();
             }
           }
-        }, _callee4);
+        }, _callee9);
       }))();
     },
-    createProduct: function createProduct(_ref7, form) {
+    createProduct: function createProduct(_ref12, form) {
       var _this5 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
         var commit, state, rootState, formData, actif, i;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
-                commit = _ref7.commit, state = _ref7.state, rootState = _ref7.rootState;
+                commit = _ref12.commit, state = _ref12.state, rootState = _ref12.rootState;
                 state.edit = false;
                 formData = new FormData();
                 actif = form.active ? 1 : 0;
@@ -105194,7 +105307,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("color", form.color);
                 formData.append("price", form.price);
                 formData.append("actif", actif);
-                _context5.next = 16;
+                _context10.next = 16;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/products', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -105206,36 +105319,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     msg: res.data.msg
                   });
 
-                  _this5.dispatch('GetAllProducts', null, {
-                    root: true
-                  });
+                  _this5.dispatch('admin/GetAllProducts');
                 })["catch"](function (e) {
                   _this5.commit('admin/setAdded', false);
 
                   _this5.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 16:
               case "end":
-                return _context5.stop();
+                return _context10.stop();
             }
           }
-        }, _callee5);
+        }, _callee10);
       }))();
     },
-    updateProduct: function updateProduct(_ref8, _ref9) {
+    updateProduct: function updateProduct(_ref13, _ref14) {
       var _this6 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
         var commit, state, rootState, form, id, actif, formData, i;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context11.prev = _context11.next) {
               case 0:
-                commit = _ref8.commit, state = _ref8.state, rootState = _ref8.rootState;
-                form = _ref9.form, id = _ref9.id;
+                commit = _ref13.commit, state = _ref13.state, rootState = _ref13.rootState;
+                form = _ref14.form, id = _ref14.id;
                 state.edit = true;
                 actif = form.active ? 1 : 0;
                 formData = new FormData();
@@ -105250,7 +105361,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (form.images.length !== 0) for (i = 0; i <= form.images.length; i++) {
                   formData.append('images[]', form.images[i]);
                 }
-                _context6.next = 16;
+                _context11.next = 16;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/products/update/' + id, formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -105262,98 +105373,94 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     msg: res.data.msg
                   });
 
-                  _this6.dispatch('GetAllProducts', null, {
-                    root: true
-                  });
+                  _this6.dispatch('admin/GetAllProducts');
                 })["catch"](function (e) {
                   _this6.commit('admin/setAdded', false);
 
                   _this6.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 16:
               case "end":
-                return _context6.stop();
+                return _context11.stop();
             }
           }
-        }, _callee6);
+        }, _callee11);
       }))();
     },
-    deleteProduct: function deleteProduct(_ref10, id) {
+    deleteProduct: function deleteProduct(_ref15, id) {
       var _this7 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
         var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context12.prev = _context12.next) {
               case 0:
-                commit = _ref10.commit;
-                _context7.next = 3;
+                commit = _ref15.commit;
+                _context12.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/api/products/' + id).then(function (res) {
                   _this7.commit('toastSuccess', {
                     msg: res.data.msg
                   });
 
-                  _this7.dispatch('GetAllProducts', null, {
-                    root: true
-                  });
+                  _this7.dispatch('admin/GetAllProducts');
                 })["catch"](function (e) {
                   _this7.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 3:
               case "end":
-                return _context7.stop();
+                return _context12.stop();
             }
           }
-        }, _callee7);
+        }, _callee12);
       }))();
     },
-    deleteImage: function deleteImage(_ref11, id) {
+    deleteImage: function deleteImage(_ref16, id) {
       var _this8 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
         var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context13.prev = _context13.next) {
               case 0:
-                commit = _ref11.commit;
-                _context8.next = 3;
+                commit = _ref16.commit;
+                _context13.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/api/products/image/' + id).then(function (res) {
                   _this8.commit('toastSuccess', {
                     msg: res.data.msg
                   });
                 })["catch"](function (e) {
                   _this8.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 3:
               case "end":
-                return _context8.stop();
+                return _context13.stop();
             }
           }
-        }, _callee8);
+        }, _callee13);
       }))();
     },
-    createNews: function createNews(_ref12, _ref13) {
+    createNews: function createNews(_ref17, _ref18) {
       var _this9 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
         var commit, state, rootState, form, moment, formData, actif, author;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
           while (1) {
-            switch (_context9.prev = _context9.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
-                commit = _ref12.commit, state = _ref12.state, rootState = _ref12.rootState;
-                form = _ref13.form, moment = _ref13.moment;
+                commit = _ref17.commit, state = _ref17.state, rootState = _ref17.rootState;
+                form = _ref18.form, moment = _ref18.moment;
                 state.edit = false;
                 formData = new FormData();
                 actif = form.is_published ? 1 : 0;
@@ -105366,7 +105473,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("author", author);
                 formData.append("publish_date", moment(form.publish_date).format('YYYY-MM-DD HH:mm:ss'));
                 formData.append("is_published", actif);
-                _context9.next = 16;
+                _context14.next = 16;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/news', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -105378,36 +105485,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     msg: res.data.msg
                   });
 
-                  _this9.dispatch('GetAllNews', null, {
-                    root: true
-                  });
+                  _this9.dispatch('admin/GetAllNews');
                 })["catch"](function (e) {
                   _this9.commit('admin/setAdded', false);
 
                   _this9.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 16:
               case "end":
-                return _context9.stop();
+                return _context14.stop();
             }
           }
-        }, _callee9);
+        }, _callee14);
       }))();
     },
-    updateNews: function updateNews(_ref14, _ref15) {
+    updateNews: function updateNews(_ref19, _ref20) {
       var _this10 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15() {
         var commit, state, rootState, form, id, moment, updateForm, actif, author;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context15) {
           while (1) {
-            switch (_context10.prev = _context10.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
-                commit = _ref14.commit, state = _ref14.state, rootState = _ref14.rootState;
-                form = _ref15.form, id = _ref15.id, moment = _ref15.moment;
+                commit = _ref19.commit, state = _ref19.state, rootState = _ref19.rootState;
+                form = _ref20.form, id = _ref20.id, moment = _ref20.moment;
                 state.edit = true;
                 updateForm = new FormData();
                 actif = form.is_published ? 1 : 0;
@@ -105420,7 +105525,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 updateForm.append("is_published", actif);
                 if (form.image !== null) updateForm.append("image", form.image);
                 if (form.banner !== null) updateForm.append("banner", form.banner);
-                _context10.next = 16;
+                _context15.next = 16;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/news/' + id, updateForm, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -105432,56 +105537,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     msg: res.data.msg
                   });
 
-                  _this10.dispatch('GetAllNews', null, {
-                    root: true
-                  });
+                  _this10.dispatch('admin/GetAllNews');
                 })["catch"](function (e) {
                   _this10.commit('admin/setAdded', false);
 
                   _this10.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 16:
               case "end":
-                return _context10.stop();
+                return _context15.stop();
             }
           }
-        }, _callee10);
+        }, _callee15);
       }))();
     },
-    deleteNews: function deleteNews(_ref16, id) {
+    deleteNews: function deleteNews(_ref21, id) {
       var _this11 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16() {
         var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context16) {
           while (1) {
-            switch (_context11.prev = _context11.next) {
+            switch (_context16.prev = _context16.next) {
               case 0:
-                commit = _ref16.commit;
-                _context11.next = 3;
+                commit = _ref21.commit;
+                _context16.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/api/news/' + id).then(function (res) {
                   _this11.commit('toastSuccess', {
                     msg: res.data.msg
                   });
 
-                  _this11.dispatch('GetAllNews', null, {
-                    root: true
-                  });
+                  _this11.dispatch('admin/GetAllNews');
                 })["catch"](function (e) {
                   _this11.commit('toastFail', {
-                    msg: e.response.data.message
+                    msg: e.response.data.msg
                   });
                 });
 
               case 3:
               case "end":
-                return _context11.stop();
+                return _context16.stop();
             }
           }
-        }, _callee11);
+        }, _callee16);
       }))();
     }
   }

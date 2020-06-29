@@ -19,13 +19,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum', ])->group(function () {
+    Route::get('/brands/admin', 'BrandController@adminIndex');
     Route::post('/brands', 'BrandController@store');
     Route::post('/brands/update/{id}', 'BrandController@update');
     Route::delete('/brands/{id}', 'BrandController@delete');
+    Route::get('/products/admin', 'ProductController@adminIndex');
+    Route::get('/products/admin/{id}', 'ProductController@adminShow');
     Route::post('/products', 'ProductController@store');
     Route::delete('/products/image/{id}', 'ImageController@delete');
     Route::post('/products/update/{id}', 'ProductController@update');
     Route::delete('/products/{id}', 'ProductController@delete');
+    Route::get('/news/admin', 'ActuController@adminIndex');
+    Route::get('/news/admin/{id}', 'ActuController@adminShow');
     Route::post('/news', 'ActuController@store');
     Route::post('/news/{id}', 'ActuController@update');
     Route::delete('/news/{id}', 'ActuController@delete');

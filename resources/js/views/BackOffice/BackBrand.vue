@@ -70,7 +70,7 @@
         },
         methods: {
             ...mapActions({
-                GetAllBrands: 'GetAllBrands',
+                GetAllBrands: 'admin/GetAllBrands',
             }),
 
             ...mapMutations({
