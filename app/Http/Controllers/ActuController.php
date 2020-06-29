@@ -103,7 +103,7 @@ class ActuController extends Controller
      */
     public function show(Actu $actu, $id)
     {
-        return response()->json($actu->where('actif',true)->findOrFail($id));
+        return response()->json($actu->where('is_published',true)->where('publish_date','<=',Carbon::now())->findOrFail($id));
     }
 
     /**
