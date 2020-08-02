@@ -106,15 +106,6 @@ class ActuController extends Controller
         return response()->json($actu->where('is_published',true)->where('publish_date','<=',Carbon::now())->findOrFail($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Actu $actu
-     * @return Response
-     */
-    public function edit(Actu $actu)
-    {
-    }
 
     /**
      * Update the specified resource in storage.
@@ -197,16 +188,5 @@ class ActuController extends Controller
 
         $news->delete();
         return response()->json(['msg' => 'Suppression réussis !']);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Actu $actu
-     * @return Response
-     */
-    public function destroy(Actu $actu)
-    {
-        //
     }
 }

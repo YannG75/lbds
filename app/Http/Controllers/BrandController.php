@@ -28,16 +28,6 @@ class BrandController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -84,17 +74,6 @@ class BrandController extends Controller
     public function show(Brand $brand, $id)
     {
         return $brand->findOrFail($id)->load('products');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Brand $brand
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Brand $brand)
-    {
-        //
     }
 
     /**
@@ -153,18 +132,6 @@ class BrandController extends Controller
 
         return response()->json(['msg' => 'Modification effectué avec succès ! 😇']);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Brand $brand
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Brand $brand)
-    {
-        //
-    }
-
 
     public function delete($id, Brand $brand)
     {

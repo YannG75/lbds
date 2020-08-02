@@ -37,7 +37,7 @@ export default {
         async confirmDelete(state, {ftn , id}) {
            await Dialog.confirm({
                 title: 'Suppression',
-                msg: 'Êtes-vous sur de vouloir <b>supprimer</b> ceci ?',
+                msg: `Êtes-vous sur de vouloir <b>supprimer</b> ceci ?`,
                 confirmText: 'Oui !',
                 type: 'is-danger',
                 hasIcon: true,
