@@ -118,6 +118,10 @@
         margin-bottom: unset;
     }
 
+    .global {
+        position: fixed;
+    }
+
 
 
     a.navbar-item:focus, .navbar-item:hover, .navbar-item a:hover, .navbar-item a:focus {
