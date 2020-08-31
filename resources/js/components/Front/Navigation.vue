@@ -119,7 +119,8 @@
     }
 
     .global {
-        position: fixed;
+        position: sticky;
+        top:0;
     }
 
 
