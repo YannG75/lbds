@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "buefy": "^0.8.17",
-        "moment": "^2.26.0",
+        "moment": "^2.29.2",
         "v-mask": "^2.2.1",
         "vue-router": "^3.1.6",
         "vuelidate": "^0.7.5",
